@@ -1,0 +1,23 @@
+==============================================================================
+                             The LED Block Cipher
+==============================================================================
+For more informations see:
+
+            https://sites.google.com/site/ledblockcipher/design
+                                      or
+            http://www.springerlink.com/content/630873l12h23484p
+
+WARNING: DO NOT use this implementation in productive systems! For
+EXPERIMENTAL USE ONLY.
+==============================================================================
+
+Usage
+
+64-bit key:
+./led-64 -p "01234567 89abcdef" -k "01234567 89abcdef" 
+// ciphertext: fdd6fb98 45f81456
+
+128-bit key:
+./led-128 -p "01234567 89abcdef" -k "01234567 89abcdef 01234567 89abcdef" 
+// ciphertext: 3131c231 205c3664
+

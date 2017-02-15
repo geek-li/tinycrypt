@@ -1,0 +1,11 @@
+     Article: SEA: A Scalable Encryption Algorithm for Small Embedded Applications, Smart Card Research and Advanced Applications 06[69]
+    Authors: Francois-Xavier Standaert, Gilles Piret, Neil Gershenfeld, and Jean-Jacques Quisquater
+    Target: Software and Hardware 
+
+SEA is a block cipher which can have an arbitrary block size n (as long as n=6b for some b), word size w and number of rounds nr. A complete description of the algorithm (round function and update of the key) is given on the figure on the right which comes from the original paper[69]. It is based on the following operations:
+
+    Bitwise XOR
+    Application of a S-box S. Interestingly, S is a 3x3 S-box.
+    Rotation of the words in a vector of words
+    Bit rotation inside a word
+    Addition modulo 2b 

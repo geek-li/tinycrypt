@@ -1,0 +1,9 @@
+     Article: Piccolo: an ultra-lightweight blockcipher, CHES 11[51]
+    Authors: Shibutani, K., Isobe, T., Hiwatari, H., Mitsuda, A., Akishita, T., & Shirai, T.
+    Target: Hardware 
+
+Piccolo is a GFS with 4 16-bits branches which employs a sophisticated permutation for the diffusion layer instead of a simple shift (like TWINE and as opposed to CLEFIA) as well as whitening. Note that although the branches of the Fesitel structure are made of 16 bits, the permutation operates on words of 8 bits.
+
+The Feistel function is a small SPN where the permutation layer is a multiplication by the same matrix as the one used in the MixNibbles operation in the AES and KLEIN --- although in a different field. The 4x4 S-box was designed especially for Piccolo and, while still having decent non-linearity and differential uniformity, has a tiny hardware footprint: it can be implemented using only 4 NOR gates, 3 XOR gates and 1 XNOR gate. A small SPN is also used as the Feistel function in ITUbee.
+
+The designers work for Sony and several of them worked on CLEFIA. 

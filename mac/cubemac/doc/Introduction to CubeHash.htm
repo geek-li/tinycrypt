@@ -1,0 +1,122 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<style type=text/css>pre{font-size:large;}tt{font-size:large;}</style>
+<title>
+Introduction to CubeHash
+</title>
+</head>
+<body>
+<table width="100%">
+  <tr>
+    <td align=middle><h1><font color="#000080">CubeHash: a simple hash function</h1></font></td>
+  </tr>
+</table>
+<hr>
+<table width="100%"><tr>
+<td width="15%" align=left valign=top><table border width="100%" bgcolor="#E0E0E0"><tr><td width="100%"><table width="100%">
+<tr><td width="100%" bgcolor="#FFFF80"><font color="#000000">Introduction</font></td></tr>
+<tr><td width="100%" bgcolor="#E0E0E0"><a href="security.html" style="text-decoration:none"><font color="#000080">Security</font></a></td></tr>
+<tr><td width="100%" bgcolor="#E0E0E0"><a href="software.html" style="text-decoration:none"><font color="#000080">Software</font></a></td></tr>
+<tr><td width="100%" bgcolor="#E0E0E0"><a href="hardware.html" style="text-decoration:none"><font color="#000080">Hardware</font></a></td></tr>
+<tr><td width="100%" bgcolor="#E0E0E0"><a href="submission.html" style="text-decoration:none"><font color="#000080">Submission</font></a></td></tr>
+<tr><td width="100%" bgcolor="#E0E0E0"><a href="prizes.html" style="text-decoration:none"><font color="#000080">Prizes</font></a></td></tr>
+</table></td></tr></table>
+</td><td align=left valign=top>
+<h2>Introduction to CubeHash</h2>
+CubeHash is a very simple cryptographic hash function.
+Here's how CubeHash works.
+<p>
+The inputs to CubeHash are
+<ul>
+<li>a parameter <i>i</i> in {1,2,3,...}, the number of initialization rounds, typically 16;
+<li>a parameter <i>r</i> in {1,2,3,...}, the number of rounds per message block, typically 16;
+<li>a parameter <i>b</i> in {1,2,3,...,128}, the number of bytes per message block, typically 32;
+<li>a parameter <i>f</i> in {1,2,3,...}, the number of finalization rounds, typically 32;
+<li>a parameter <i>h</i> in {8,16,24,...,512}, the number of output bits, typically 512; and
+<li>a message <i>m</i>, a string of bits between 0 bits and 2^128-1 bits.
+</ul>
+The output to CubeHash is
+an <i>h</i>-bit string
+CubeHash<i>i</i>+<i>r</i>/<i>b</i>+<i>f</i>&ndash;<i>h</i>(<i>m</i>)
+computed as follows.
+<p>
+The message is first padded to create a sequence of <i>b</i>-byte input blocks.
+Padding works as follows:
+append a 1 bit;
+then append the minimum possible number of 0 bits to reach a multiple of 8<i>b</i> bits.
+(The bits in a byte are first 128, then 64, then 32, then 16, then 8, then 4, then 2, then 1.)
+Implementations restricted to byte-aligned messages
+can simply append a 128 byte and then the minimum possible number of 0 bytes
+to reach a multiple of <i>b</i> bytes.
+<p>
+CubeHash maintains a 128-byte state.
+It xors the first <i>b</i>-byte input block 
+into the first <i>b</i> bytes of the state,
+transforms the state invertibly through <i>r</i> identical rounds,
+xors the next <i>b</i>-byte input block 
+into the first <i>b</i> bytes of the state,
+transforms the state invertibly through <i>r</i> identical rounds,
+xors the next <i>b</i>-byte input block 
+into the first <i>b</i> bytes of the state,
+transforms the state invertibly through <i>r</i> identical rounds,
+etc.
+<p>
+The 128-byte state is viewed as a sequence of 32 4-byte words
+x[00000], x[00001], x[00010], x[00011], x[00100], ..., x[11111],
+each of which is interpreted in little-endian form as a 32-bit integer.
+A round has the following ten steps:
+<ol>
+<li>Add x[0jklm] into x[1jklm] modulo 2^32, for each (j,k,l,m).
+<li>Rotate x[0jklm] upwards by 7 bits, for each (j,k,l,m).
+<li>Swap x[00klm] with x[01klm], for each (k,l,m).
+<li>Xor x[1jklm] into x[0jklm], for each (j,k,l,m).
+<li>Swap x[1jk0m] with x[1jk1m], for each (j,k,m).
+<li>Add x[0jklm] into x[1jklm] modulo 2^32, for each (j,k,l,m).
+<li>Rotate x[0jklm] upwards by 11 bits, for each (j,k,l,m).
+<li>Swap x[0j0lm] with x[0j1lm], for each (j,l,m).
+<li>Xor x[1jklm] into x[0jklm], for each (j,k,l,m).
+<li>Swap x[1jkl0] with x[1jkl1], for each (j,k,l).
+</ol>
+That's it.
+<p>
+CubeHash produces the initial state as follows.
+Set the first three state words x[00000], x[00001], x[00010]
+to the integers <i>h</i>/8, <i>b</i>, <i>r</i> respectively.
+Set the remaining state words to 0.
+Then transform the state invertibly through <i>i</i> rounds.
+Of course, the implementor can eliminate these transformations at the expense of storage
+by precomputing the initial state for any particular <i>h</i>,<i>b</i>,<i>r</i>.
+<p>
+After all input blocks are handled,
+CubeHash produces the final hash as follows.
+Xor the integer 1 into the last state word x[11111].
+Transform the state invertibly through <i>f</i> rounds.
+Finally, output the first <i>h</i>/8 bytes of the state.
+<p>
+Overall a round has 32 32-bit additions and 32 32-bit xors,
+so CubeHash<i>r</i>/<i>b</i> 
+has 32<i>r/b</i> 32-bit additions
+and 32<i>r/b</i> 32-bit xors
+for each byte of the padded message;
+in other words,
+128<i>r/b</i> bit additions and 128<i>r/b</i> bit xors for each bit of the padded message.
+The finalization
+has 32<i>f</i> 32-bit additions
+and 32<i>f</i> 32-bit xors,
+comparable cost to handling <i>fb/r</i> bytes of input.
+The initialization, if not precomputed,
+has 32<i>i</i> 32-bit additions
+and 32<i>i</i> 32-bit xors,
+comparable cost to handling <i>ib/r</i> bytes of input.
+<p>
+My main recommendation is CubeHash512,
+defined as CubeHash16+16/32+32&ndash;512.
+CubeHash512 uses 16 32-bit additions and 16 32-bit xors for each byte of the padded message.
+Finalization has comparable cost to handling 16 bytes of input.
+Initialization has comparable cost to handling 8 bytes of input.
+<h3>Version</h3>
+This is version 2010.12.03 of the index.html web page.
+</td></tr></table>
+</body>
+</html>

@@ -1,0 +1,90 @@
+01/02/17 12:06:28 v1.34.5 @ LENOVO, System/Build Info: 
+Using GMP-ECM 7.0-dev, Powered by MPIR 2.6.0
+cached 78498 primes. pmax = 999983
+detected Intel(R) Core(TM) i5 CPU       M 460  @ 2.53GHz
+detected L1 = 32768 bytes, L2 = 3145728 bytes, CL = 64 bytes
+measured cpu frequency ~= 2516.497540
+using 20 random witnesses for Rabin-Miller PRP checks
+
+01/02/17 12:06:28 v1.34.5 @ LENOVO, New random seeds: 0, 457007616
+
+01/02/17 12:06:53 v1.34.5 @ LENOVO, System/Build Info: 
+Using GMP-ECM 7.0-dev, Powered by MPIR 2.6.0
+cached 78498 primes. pmax = 999983
+detected Intel(R) Core(TM) i5 CPU       M 460  @ 2.53GHz
+detected L1 = 32768 bytes, L2 = 3145728 bytes, CL = 64 bytes
+measured cpu frequency ~= 2515.270640
+using 20 random witnesses for Rabin-Miller PRP checks
+
+01/02/17 12:06:53 v1.34.5 @ LENOVO, New random seeds: 0, 2488960640
+
+01/02/17 12:06:53 v1.34.5 @ LENOVO, Processing expression: 1361129467683753853853498429727072845819
+
+01/02/17 12:06:59 v1.34.5 @ LENOVO, System/Build Info: 
+Using GMP-ECM 7.0-dev, Powered by MPIR 2.6.0
+cached 78498 primes. pmax = 999983
+detected Intel(R) Core(TM) i5 CPU       M 460  @ 2.53GHz
+detected L1 = 32768 bytes, L2 = 3145728 bytes, CL = 64 bytes
+measured cpu frequency ~= 2512.493350
+using 20 random witnesses for Rabin-Miller PRP checks
+
+01/02/17 12:06:59 v1.34.5 @ LENOVO, New random seeds: 0, 2844597296
+
+01/02/17 12:06:59 v1.34.5 @ LENOVO, Processing expression: 9
+
+01/02/17 12:07:06 v1.34.5 @ LENOVO, System/Build Info: 
+Using GMP-ECM 7.0-dev, Powered by MPIR 2.6.0
+cached 78498 primes. pmax = 999983
+detected Intel(R) Core(TM) i5 CPU       M 460  @ 2.53GHz
+detected L1 = 32768 bytes, L2 = 3145728 bytes, CL = 64 bytes
+measured cpu frequency ~= 2508.118200
+using 20 random witnesses for Rabin-Miller PRP checks
+
+01/02/17 12:07:06 v1.34.5 @ LENOVO, New random seeds: 0, 2345940736
+
+01/02/17 12:07:07 v1.34.5 @ LENOVO, Processing expression: ?
+
+01/02/17 12:07:17 v1.34.5 @ LENOVO, Processing expression: factor 1361129467683753853853498429727072845819
+
+01/02/17 12:07:25 v1.34.5 @ LENOVO, Processing expression: factor(1361129467683753853853498429727072845819)
+
+01/02/17 12:07:43 v1.34.5 @ LENOVO, Processing expression: factor(1361129467683753853853498429727072845819)
+
+01/02/17 12:07:50 v1.34.5 @ LENOVO, Processing expression: mpqs(1361129467683753853853498429727072845819)
+
+01/02/17 12:07:55 v1.34.5 @ LENOVO, Processing expression: sieve(1361129467683753853853498429727072845819)
+
+01/02/17 12:08:02 v1.34.5 @ LENOVO, Processing expression: prime(1361129467683753853853498429727072845819)
+
+01/02/17 12:08:23 v1.34.5 @ LENOVO, System/Build Info: 
+Using GMP-ECM 7.0-dev, Powered by MPIR 2.6.0
+cached 78498 primes. pmax = 999983
+detected Intel(R) Core(TM) i5 CPU       M 460  @ 2.53GHz
+detected L1 = 32768 bytes, L2 = 3145728 bytes, CL = 64 bytes
+measured cpu frequency ~= 2523.319400
+using 20 random witnesses for Rabin-Miller PRP checks
+
+01/02/17 12:08:23 v1.34.5 @ LENOVO, New random seeds: 0, 3491487636
+
+01/02/17 12:08:23 v1.34.5 @ LENOVO, Processing expression: /?
+
+01/02/17 12:08:28 v1.34.5 @ LENOVO, System/Build Info: 
+Using GMP-ECM 7.0-dev, Powered by MPIR 2.6.0
+cached 78498 primes. pmax = 999983
+detected Intel(R) Core(TM) i5 CPU       M 460  @ 2.53GHz
+detected L1 = 32768 bytes, L2 = 3145728 bytes, CL = 64 bytes
+measured cpu frequency ~= 2511.283570
+using 20 random witnesses for Rabin-Miller PRP checks
+
+01/02/17 12:08:28 v1.34.5 @ LENOVO, New random seeds: 0, 2658295200
+
+01/02/17 12:08:31 v1.34.5 @ LENOVO, System/Build Info: 
+Using GMP-ECM 7.0-dev, Powered by MPIR 2.6.0
+cached 78498 primes. pmax = 999983
+detected Intel(R) Core(TM) i5 CPU       M 460  @ 2.53GHz
+detected L1 = 32768 bytes, L2 = 3145728 bytes, CL = 64 bytes
+measured cpu frequency ~= 2514.723020
+using 20 random witnesses for Rabin-Miller PRP checks
+
+01/02/17 12:08:31 v1.34.5 @ LENOVO, New random seeds: 0, 3597339864
+

@@ -1,0 +1,34 @@
+Test vectors for block cipher Noekeon in Indirect-Key Mode:
+
+                     k = 00000000 00000000 00000000 00000000
+                     a = 00000000 00000000 00000000 00000000
+after NESSIEencrypt, b = ba693381 9299c716 99a99f08 f678178b
+after NESSIEdecrypt, a?= 00000000 00000000 00000000 00000000
+
+                     k = ffffffff ffffffff ffffffff ffffffff
+                     a = ffffffff ffffffff ffffffff ffffffff
+after NESSIEencrypt, b = 52f88a7b 283c1f7b df7b6faa 5011c7d8
+after NESSIEdecrypt, a?= ffffffff ffffffff ffffffff ffffffff
+
+                     k = ba693381 9299c716 99a99f08 f678178b
+                     a = 52f88a7b 283c1f7b df7b6faa 5011c7d8
+after NESSIEencrypt, b = 5096f2bf c82ae6e2 d9495515 c277fa70
+after NESSIEdecrypt, a?= 52f88a7b 283c1f7b df7b6faa 5011c7d8
+
+
+Test vectors for block cipher Noekeon in Direct-Key Mode:
+
+                     k = 00000000 00000000 00000000 00000000
+                     a = 00000000 00000000 00000000 00000000
+after NESSIEencrypt, b = b1656851 699e29fa 24b70148 503d2dfc
+after NESSIEdecrypt, a?= 00000000 00000000 00000000 00000000
+
+                     k = ffffffff ffffffff ffffffff ffffffff
+                     a = ffffffff ffffffff ffffffff ffffffff
+after NESSIEencrypt, b = 2a78421b 87c7d092 4f26113f 1d1349b2
+after NESSIEdecrypt, a?= ffffffff ffffffff ffffffff ffffffff
+
+                     k = b1656851 699e29fa 24b70148 503d2dfc
+                     a = 2a78421b 87c7d092 4f26113f 1d1349b2
+after NESSIEencrypt, b = e2f687e0 7b75660f fc372233 bc47532c
+after NESSIEdecrypt, a?= 2a78421b 87c7d092 4f26113f 1d1349b2

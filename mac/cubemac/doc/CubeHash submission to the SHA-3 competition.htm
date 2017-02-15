@@ -1,0 +1,98 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+<style type=text/css>pre{font-size:large;}tt{font-size:large;}</style>
+<title>
+CubeHash submission to the SHA-3 competition
+</title>
+</head>
+<body>
+<table width="100%">
+  <tr>
+    <td align=middle><h1><font color="#000080">CubeHash: a simple hash function</h1></font></td>
+  </tr>
+</table>
+<hr>
+<table width="100%"><tr>
+<td width="15%" align=left valign=top><table border width="100%" bgcolor="#E0E0E0"><tr><td width="100%"><table width="100%">
+<tr><td width="100%" bgcolor="#E0E0E0"><a href="index.html" style="text-decoration:none"><font color="#000080">Introduction</font></a></td></tr>
+<tr><td width="100%" bgcolor="#E0E0E0"><a href="security.html" style="text-decoration:none"><font color="#000080">Security</font></a></td></tr>
+<tr><td width="100%" bgcolor="#E0E0E0"><a href="software.html" style="text-decoration:none"><font color="#000080">Software</font></a></td></tr>
+<tr><td width="100%" bgcolor="#E0E0E0"><a href="hardware.html" style="text-decoration:none"><font color="#000080">Hardware</font></a></td></tr>
+<tr><td width="100%" bgcolor="#FFFF80"><font color="#000000">Submission</font></td></tr>
+<tr><td width="100%" bgcolor="#E0E0E0"><a href="prizes.html" style="text-decoration:none"><font color="#000080">Prizes</font></a></td></tr>
+</table></td></tr></table>
+</td><td align=left valign=top>
+<h2>CubeHash submission to the SHA-3 competition</h2>
+<h2>First submission</h2>
+In October 2008, I proposed
+CubeHash80+8/1+80&ndash;224,
+CubeHash80+8/1+80&ndash;256,
+CubeHash80+8/1+80&ndash;384, and
+CubeHash80+8/1+80&ndash;512
+as SHA-3 candidates.
+My submission to NIST included
+<ul>
+<li>a <a href="submission/spec.pdf">specification and rationale</a>,
+<li>an <a href="submission/attacks.pdf">analysis of attacks</a>,
+<li>an <a href="submission/estimates.pdf">efficiency estimate</a>,
+<li>a <a href="submission/features.pdf">statement of features</a>,
+<li>a <a href="submission/strength.pdf">statement of expected strength</a>, and
+<li>an <a href="submission/generic.pdf">appendix on the complexity of generic attacks</a>,
+</ul>
+along with software and test vectors.
+<h2>Second submission</h2>
+In July 2009,
+responding to NIST clarifications of speed criteria and security criteria,
+I proposed a different selection of CubeHash parameters for SHA-3:
+<ul>
+<li>CubeHash160+16/32+160&ndash;224 for SHA-3&ndash;224,
+<li>CubeHash160+16/32+160&ndash;256 for SHA-3&ndash;256,
+<li>CubeHash160+16/32+160&ndash;384 for SHA-3&ndash;384-normal,
+<li>CubeHash160+16/32+160&ndash;512 for SHA-3&ndash;512-normal,
+<li>CubeHash160+16/1+160&ndash;384 for SHA-3&ndash;384-formal, and
+<li>CubeHash160+16/1+160&ndash;512 for SHA-3&ndash;512-formal.
+</ul>
+CubeHash16/32 is approximately 16 times faster than CubeHash8/1.
+I submitted a document
+<ul>
+<li><a href="submission/tweak.pdf">CubeHash parameter tweak: 16 times faster</a>
+</ul>
+to NIST describing this change in detail.
+<p>
+In September 2009,
+I sent NIST an updated
+<ul>
+<li><a href="submission2/spec.pdf">specification and rationale</a>,
+<li><a href="submission2/attacks.pdf">analysis of attacks</a>,
+<li><a href="submission2/estimates.pdf">efficiency estimate</a>,
+<li><a href="submission2/features.pdf">statement of features</a>, and
+<li><a href="submission2/strength.pdf">statement of expected strength</a>, plus a
+<li><a href="submission2/Round2Mods.pdf">description of changes in the submission</a>.
+</ul>
+<h2>Third submission</h2>
+In November 2010,
+responding to concerns regarding the short-message performance of CubeHash
+(particularly for packet authentication),
+I proposed a different selection of CubeHash parameters for SHA-3:
+<ul>
+<li>CubeHash128, defined as CubeHash16+16/32+32&ndash;128, for AHS128;
+<li>CubeHash160, defined as CubeHash16+16/32+32&ndash;160, for AHS160;
+<li>CubeHash224, defined as CubeHash16+16/32+32&ndash;224, for AHS224;
+<li>CubeHash256, defined as CubeHash16+16/32+32&ndash;256, for AHS256;
+<li>CubeHash384, defined as CubeHash16+16/32+32&ndash;384, for AHS384;
+<li>CubeHash512, defined as CubeHash16+16/32+32&ndash;512, for AHS512;
+<li>CubeHash512x, defined as CubeHash16+16/1+32&ndash;512, for AHS512x; and
+<li>CubeMAC128, defined as CubeHash16+16/32+32&ndash;128
+where a 512-bit secret key is prepended to the input, for AMAC128.
+</ul>
+I submitted a document
+<ul>
+<li><a href="submission2/tweak2.pdf">CubeHash parameter tweak: 10 times smaller MAC overhead</a>
+</ul>
+to NIST describing this change in detail.
+<h3>Version</h3>
+This is version 2010.12.03 of the submission.html web page.
+</td></tr></table>
+</body>
+</html>

@@ -1,0 +1,60 @@
+
+These primes are called "safe" because of their relationship to strong 
+primes. A prime number q is a strong prime if q + 1 and q − 1 both 
+have some large prime factors. For a safe prime q = 2p + 1, the number q 
+− 1 naturally has a large prime factor, namely p, and so a safe prime 
+q meets part of the criteria for being a strong prime 
+
+Safe primes are also important in cryptography because of their use in 
+discrete logarithm-based techniques like Diffie-Hellman key exchange. If 
+2p + 1 is a safe prime, the multiplicative group of numbers modulo 2p + 
+1 has a subgroup of large prime order. It is usually this prime-order 
+subgroup that is desirable, and the reason for using safe primes is so 
+that the modulus is as small as possible relative to p. 
+
+
+In the general case, for proper security with Diffie-Hellman, we need a 
+value g such that the order of g (the smallest integer n ≥ 1 such that 
+gn = 1 mod p) is a multiple of a large enough prime q. "Large enough" means 
+"of length at least 2t bits if we target t-bit security". Since n 
+necessarily divides p−1, q divides p−1. 
+
+We normally want to know q, so q is generated first, then p. Namely, we 
+create a random prime q of size 2t bits, then we produce p=qr+1 for 
+random values of r until we hit a prime. This is what is done for 
+generating DSA key parameters, which have the same structure than 
+Diffie-Hellman key parameters (see the DSA standard). Note that 
+producing a random prime p would already yield a "large enough" q with 
+overwhelming probability (but we wound not know the value of q, only 
+that it is very improbable that the largest prime factor of p−1 is 
+smaller than 2t bits). 
+
+Then, to get the "generator" g, we can just use any random integer 
+modulo p: the probability that q is not a divisor of the order of a 
+random non-zero integer modulo p if 1/q, i.e. so small that you will not 
+hit it in practice (the overall security of Diffie-Hellman relies on the 
+practical impossibility of obtaining events which are billions of times 
+more probable than that). Nevertheless, some people get nervous in the 
+face of probabilities, and will feel safer if we test the generator. The 
+procedure then becomes: create a random integer u modulo p and compute 
+g=u(p−1)/q mod p. If g=1, then try again with a new random u (this is 
+the very improbable event that you will not get in practice); otherwise, 
+it can easily be shown that g has order exactly q, and thus is a good 
+generator for Diffie-Hellman. 
+
+Another method is to get a very large q, i.e. generate p such that 
+p=2q+1 and q is prime. We then call p a "strong prime". It can be seen 
+that the order of a random non-zero integer g modulo p is either 1, 2, q 
+or 2q; order 1 is possibly only with g=1, and order 2 is possible only 
+with g=p−1. Any other integer modulo p will be fine for 
+Diffie-Hellman. In particular, you can use g=2 as generator, which can 
+yield a bit of a computational speed-up. 
+
+But really, the fastest way to get p and the generator is to abstain 
+from generating them. There is no security issue with Diffie-Hellman (or 
+DSA) if you reuse previously generated p, q and g; several people can 
+share these values for their respective key pairs and this does not 
+weaken the system in any way. So you can pick up "standard" values, e.g. 
+the ones described in RFC 2409 (section 6.2) or RFC 5114 (sections 2.1 
+to 2.3). 
+

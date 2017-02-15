@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<!-- START OF _layouts/default.html -->
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+		<meta content="width=device-width,initial-scale=1" name="viewport">
+		<meta content="" name="description">
+		<meta content="Quarrelsome" name="author">
+    <meta content="Applied Cryptography Engineering" name="title">
+    
+    
+     
+		<title>Applied Cryptography Engineering — Quarrelsome</title>
+		
+		<!-- Styles -->
+		<link rel="stylesheet" type="text/css" href="Applied%20Cryptography%20Engineering%20%E2%80%94%20Quarrelsome_files/fonts.css">		
+		<link href="Applied%20Cryptography%20Engineering%20%E2%80%94%20Quarrelsome_files/main.css" rel="stylesheet">
+
+		<!-- Google webfonts -->
+		<link rel="stylesheet" type="text/css" href="Applied%20Cryptography%20Engineering%20%E2%80%94%20Quarrelsome_files/css_002.css">
+		<link rel="stylesheet" type="text/css" href="Applied%20Cryptography%20Engineering%20%E2%80%94%20Quarrelsome_files/css.css">
+
+<script src="Applied%20Cryptography%20Engineering%20%E2%80%94%20Quarrelsome_files/analytics.js" async=""></script><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-68682-5', 'sockpuppet.org');
+  ga('send', 'pageview');
+
+</script>
+		
+		<!-- jQuery and plugins -->
+		<script src="Applied%20Cryptography%20Engineering%20%E2%80%94%20Quarrelsome_files/jquery_002.js"></script>
+		<script src="Applied%20Cryptography%20Engineering%20%E2%80%94%20Quarrelsome_files/jquery.js"></script>
+		
+		<!-- Syntax highlighter -->
+		<link href="Applied%20Cryptography%20Engineering%20%E2%80%94%20Quarrelsome_files/prettify-hemisu.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript" src="Applied%20Cryptography%20Engineering%20%E2%80%94%20Quarrelsome_files/prettify.js"></script>
+		
+		<!--<link href="http://feeds.feedburner.com/turkeltaub" rel="alternate" title="Quarrelsome" type="application/rss+xml" />-->
+		
+	</head>
+	<body onload="prettyPrint()">
+
+		<div class="wrap">
+	
+			<header>
+				<div class="title">
+					<a href="http://sockpuppet.org/">
+						<img src="Applied%20Cryptography%20Engineering%20%E2%80%94%20Quarrelsome_files/fw.png">
+					</a>
+				</div>
+	
+							
+				<div class="navi">
+					<a href="http://sockpuppet.org/about">Meta</a>
+					/ 
+					<a href="http://sockpuppet.org/blog/archives">Older</a>
+				</div> <!-- // .navi -->
+				
+			</header>
+		
+				<!-- START OF _layouts/post.html -->
+
+<!-- START OF _includes/article.html -->
+<article>
+	<header>
+		<h1><a href="http://sockpuppet.org/blog/2013/07/22/applied-practical-cryptography/">Applied Cryptography Engineering</a></h1>
+		<time>22 July 2013 </time>
+	</header>
+		<div class="content">
+			<p>If you’re reading this, you’re probably a red-blooded American 
+programmer with a simmering interest in cryptography. And my guess is 
+your interest came from Bruce Schneier’s <em>Applied Cryptography</em>.</p>
+
+<p><em>Applied Cryptography</em> is a deservedly famous book that lies 
+somewhere between survey, pop-sci advocacy, and almanac. It taught two 
+generations of software developers everything they know about crypto. 
+It’s literate, readable, and ambitious. What’s not to love?</p>
+
+<p>Just this: as an instruction manual, <em>Applied Cryptography</em> is dreadful. <a href="http://www.schneier.com/blog/archives/2009/09/the_cult_of_sch.html">Even Schneier seems to  concede the point.</a> This article was written with several goals: to hurry along the process of getting <em>Applied Cryptography</em>
+ off the go-to stack of developer references,
+to point out the right book to replace it with, and to spell out what 
+you else you need to know even after reading that replacement. Finally, I
+ wrote this as a sort of open letter to Schneier and his co-authors.</p>
+
+<br>
+
+
+<p>Here’s an example of the problem with <em>Applied Cryptography</em>:</p>
+
+<blockquote><p>If simplicity and speed are your main concerns, ECB is 
+the easiest and fastest mode to use a block cipher. It’s also the 
+weakest. Besides being vulnerable to replay attacks, an algorithm in ECB
+ mode is the easiest to cryptanalyze. I don’t recommend ECB for message 
+encryption.</p>
+
+<p>For encrypting random data, such as other keys, ECB is a good mode to
+ use. Since the data is short and random, none of the shortcomings of 
+ECB matter for this application.</p></blockquote>
+
+<p>To understand how dangerous this advice is, you need to understand 
+block cipher modes. Most real-world encryption is based on block ciphers
+ <span class="sidenote">  AES is a block cipher; so are DES and Blowfish. </span>
+ , which transform fixed-sized inputs into fixed-sized outputs. Since 
+real-world inputs aren’t exactly 8 or 16 bytes wide, ciphers are adapted
+ to them with a block mode.</p>
+
+<p>Of the available block modes, ECB is the simplest to understand. It’s
+ the mode you’d design yourself, the first time you confronted a block 
+cipher: divide the input into blocks, and apply the cipher to each 
+independently. ECB mode is so widespread that we call it “the default 
+mode”.</p>
+
+<p>What <em>Applied Cryptography</em> has to say about ECB technically correct <span class="sidenote">  Technically correct: not the best kind of correct in cryptography. </span>
+  at best, and outright wrong at worst. ECB is virtually never safe to 
+use. It probably won’t make your ciphertext “easier to cryptanalyze”. 
+Rather, it’s going to make it decryptable, by an attacker without the 
+key, using a Perl script.</p>
+
+<br>
+
+
+<p><strong>You should own Ferguson and Schneier’s follow-up, <em>Cryptography Engineering</em> (C.E.).</strong>  <span class="sidenote">  <em>Cryptography Engineering</em>, used to be called <em>Practical Cryptography</em>. The two books are practically identical.  </span>
+  Written partly in penance, the new book deftly handles material the 
+older book stumbles over. C.E. wants to teach you the right way to work 
+with cryptography without wasting time on GOST and El Gamal.</p>
+
+<p>C.E. takes pains to teach which mode to use, raising the specter of 
+ECB only to exorcise it before weighing the pros and cons of CBC and 
+CTR.  The book takes most of a chapter guiding readers to safe 
+conclusions.</p>
+
+<p>By contrast, along with a chart on the page that follows it, the excerpt above constitutes much of <em>Applied Cryptography’s</em>
+ instruction on block modes. The book offers detailed coverage of DES, 
+Lucifer, Madryga, NEWDES, FEAL, REDOC, LOKI, Khufu, RC2, IDEA, MMB, 
+CA-1.1, Skipjack, GOST, CAST, Blowfish, SAFER, 3WAY, CRAB, SXAL8, and 
+RC5. You will never need to know any of these. In fact, you’ll almost 
+never “choose” ciphers at all: you’re going to choose AES, or the 
+finalists of crypto competitions. But you’ll often need to choose cipher
+ modes.</p>
+
+<p>The biggest problem with <em>Applied Cryptography</em> isn’t the 
+technical content, but the tone. It can’t decide whether to be a tour 
+guide or a handbook. It’s fantastic pop science, but a dangerously 
+broken textbook. Ever found an implementation of Needham-Schroeder using
+ IDEA in ECB mode with digital signatures built on SNEFRU? The designer 
+read <em>Applied Cryptography</em>. You can smell cryptosystems written by the book’s enthusiasts.</p>
+
+<p>The tone of C.E. is sharply different. After reading it, you’re:  <span class="sidenote">
+  (To their credit, Ferguson and Schneier seem equally intent on 
+convincing people not to build bespoke crypto in the first place.) </span></p>
+
+<ul>
+<li>going to use AES,</li>
+<li>in CBC or CTR mode,</li>
+<li>probably with random IVs,</li>
+<li>with randomness from a real CSPRNG,</li>
+<li>using HMAC-SHA2 to authenticate.</li>
+</ul>
+
+
+<p>The best security books are the ones you can “read backwards” to 
+learn how to attack systems instead of defending them. Cheswick and 
+Bellovin’s <em>Firewalls &amp; Internet Security</em> is like that; so is <em>The Art Of Software Security Assessment</em>. The first time I read C.E., I had the same feeling.</p>
+
+<p>So I like <em>Cryptography Engineering</em>.</p>
+
+<br>
+
+
+<p>But of course, the important question about a book on crypto isn’t whether I like it.</p>
+
+<p>Instead, you want to ask: could a competent developer read it, and,  <span class="sidenote">  (…to the limit of what you could do with a book, of course) </span>  retaining everything, stand a chance at building a survivable cryptosystem?</p>
+
+<p>I’m not sure. There are gaps in C.E.’s coverage. I’d like to lay 
+those out now, in the hopes that a new edition (presumably to be called 
+“Modern Cryptographic Design” so as to confuse us further) might spill 
+some well-deserved ink on them.</p>
+
+<p>2001-2003 was the tail end of the cryptographic dark ages, so let’s 
+be clear that the book I’m criticizing was an achievement for its time. 
+And its still the best guidebook to building crypto!  That’s why I think
+ it’s worth the time to dissect. “It’s all love”, as Stringer Bell might
+ say.</p>
+
+<p>Look at the highlight reel since the book was written: <span class="sidenote">  There were other advances, but C.E. did a good job presaging many of them. </span></p>
+
+<ul>
+<li><p>Vaudenay’s CBC padding oracle attack, published just as the book 
+was being written, racked up kills across pretty much every major web 
+framework, including ASP.NET and Java.</p></li>
+<li><p>Gregory Bard’s chosen-plaintext attack on TLS with predictable 
+IVs was published and became the basis for Duong and Rizzo’s BEAST.</p></li>
+<li><p>Osvik, Tromer, Percival, Bernstein, and a cast of thousands 
+published the microarchitectural side channels, including cache timings 
+that work over networks and local cache and branch buffer timings that 
+threaten cloud hosted crypto.</p></li>
+<li><p>Bleichenbacher’s e=3 signature bug in RSA validation broke Firefox.</p></li>
+<li><p>Duong and Rizzo published the CRIME attack on TLS compression.</p></li>
+</ul>
+
+
+<p>These attacks helped contribute new knowledge to the field. But many 
+more attacks were published which, though known to the literature when 
+C.E. was written, re-weighted the literature. A good example is the  
+Playstation 3, which fell to repeated k-values in DSA signing.</p>
+
+<h3>Number Theoretic Crypto</h3>
+
+<p>C.E.’s coverage of RSA is weak enough that I think someone needs to write an article clarifying it. <strong>Nobody gets RSA right.</strong></p>
+
+<p>The thing to know about RSA is that it behaves differently from 
+algorithms like AES. RSA ciphertexts are “just numbers” in a way that 
+isn’t true with AES, and that makes RSA attacks subtler.</p>
+
+<p>Lamentably, and despite the obvious effort Ferguson and Schneier sink
+ into the math, they don’t nail the usage basics the way they do for 
+AES. Encryption with RSA is counterintuitive: you need to go out of your
+ way to feed it data that is as meaningless as possible. That’s the 
+opposite of how a developer would think to use RSA. The authors don’t 
+seem to expect readers to actually deploy RSA. If wishes were fishes!</p>
+
+<p>A corrective article on C.E.’s RSA/DH coverage (or a new edition of C.E.) should teach developers:</p>
+
+<ul>
+<li><p>About OAEP (for encryption) and PSS (for signing), the two safe 
+ways to use RSA, and about the flaws of the default, PKCS #1 v1.5.</p></li>
+<li><p>How numeric parameters are exploited in actual attacks (not just how to generate them safely).</p></li>
+<li><p>How to safely validate RSA parameters and, in particular, how to 
+safely generate and validate primes — a source of real-world RSA 
+attacks.</p></li>
+<li><p>A more conservative selection of parameters; for instance, it’s probably time to bury e=3 RSA.</p></li>
+</ul>
+
+
+<p>Lastly: designers can trade flexibility for reduced complexity, and 
+that’s usually a win. For instance, a crypto protocol can (and often 
+should) hardcode parameters rather than negotiating them. Little mention
+ is made of that opportunity in C.E. Too bad. The conservative approach 
+is again counterintuitive to developers, to whom hardcoding anything is 
+like simony.</p>
+
+<h3>Missing Basic Algorithms</h3>
+
+<p>The authors take the general tack of not describing constructions 
+they don’t like. The problem is, patented or not, some of the excluded 
+schemes see widespread use.</p>
+
+<p>SRP is a great example. SRP establishes keys between a client and a 
+server using only a password, and authenticates that password without 
+revealing it. That’s simply too useful a capability for developers not 
+to use. Being morally similar to DH, SRP inherits many of its pitfalls: 
+we routinely defeat several SRP implementations by coercing servers to 
+zero out key computations.</p>
+
+<p>A more troublesome omission is DSA. DSA is a cryptographic signing 
+algorithm; it’s used to authenticate binaries, or to sign Diffie Hellman
+ exchanges for secure channels with forward secrecy. It’s both popular 
+and very tricky, as the authors of the Playstation 3 signing code might 
+tell you. DSA seems like a case where even if you decide not to cover 
+it, you’d probably want to add strongly-worded language about how 
+dangerous it is to play with. No such warning is to be found in this 
+book.</p>
+
+<h3>Elliptic Curve</h3>
+
+<p>Elliptic curve cryptography (ECC) is similar in spirit to basic 
+number-theoretic cryptography, but in a different, harder mathematical 
+group. ECC keys are smaller, offering better security per key bit spent.</p>
+
+<p>C.E. entire coverage of ECC is the single clause “such as those used 
+in elliptic curve” (and note that clause isn’t even specific to ECC; 
+zero points awarded).</p>
+
+<p><strong>ECC is going to replace RSA within the next 10 years.</strong>
+ New systems probably shouldn’t use RSA at all. The basic finite field 
+groups used by RSA and Diffie Hellman are looking less and less safe 
+(see Joux, or Eran Tromer’s hypothesized 1024-bit RSA cracker with its 
+measly $1MM price tag).</p>
+
+<p>Conventional wisdom has ECC being notoriously tricky. And, for extra 
+fun, ECC constructions inherit the implementation traps of DH and DSA. 
+Developers need lots of help with it. It’s downright weird for the best 
+modern crypto book to exclude ECC.</p>
+
+<h3>Encrypt-then-MAC</h3>
+
+<p>Imagine being lectured <span class="sidenote">  You always need to do both, encrypt and MAC, and a grateful nation thanks Ferguson and Schneier for making that clear. </span>
+  by Wallace Shawn’s character from The Princess Bride on the phlogiston
+ theory of combustion. That’s a little bit like what it’s like to learn 
+the proper order of encryption and authentication from C.E. <strong>We know today that you want to encrypt, then authenticate</strong>; to do otherwise is to invoke Moxie Marlinspike’s <a href="http://www.thoughtcrime.org/blog/the-cryptographic-doom-principle/">Cryptographic Doom Principle</a>.
+ But even though encrypt-then-MAC had been proven secure when C.E. was 
+first written, the authors aren’t so sure, and attempt to “teach the 
+controversy”.</p>
+
+<p>For the flavor of how improvident that coverage turns out to be, see 
+HTTPS/TLS. Every modern TLS stack offers AES encryption. But many of the
+ largest, savviest sites in the world prefer instead RC4, a comically 
+broken stream cipher obsoleted half a decade before Ferguson and 
+Schneier’s book was printed. Why? Because HTTPS/TLS is from the 
+phlogiston era of cryptography and uses AES in a MAC-then-encrypt 
+construction, resulting in an intractable timing vulnerability.</p>
+
+<h3>Stream Encryption</h3>
+
+<p>A very careful reader can probably deploy stream encryption from C.E.
+ recommendations and survive. But the coverage is imperfect; for 
+instance:</p>
+
+<blockquote><p>As with OFB mode, you must make absolutely sure never to 
+reuse a single key/nonce combination. This is a disadvantage that is 
+often mentioned for CTR, but CBC has exactly the same problem. If you 
+use the same IV twice, you start leaking data about the plaintexts. CBC 
+is a bit more robust, as it is more likely to limit the amount of 
+information leaked.</p></blockquote>
+
+<p>The equivalence drawn between CTR nonces and CBC IVs is crazymaking. 
+CBC does not have exactly the same problem as CTR; it has a very 
+different problem. CTR nonces must never repeat. CBC IVs must not be 
+predictable. Screw up a CTR nonce and your system is breakable offline 
+with a pencil and paper; do the same with CBC and you’ve enabled online 
+attacks with attacker-controlled plaintext.</p>
+
+<p>C.E. lacks any coverage on native stream ciphers, such as the ones 
+judged by the eSTREAM competition. There’s a rich literature on native 
+stream ciphers, and C.E. doesn’t help developers make use of it.</p>
+
+<p>The book also misses an opportunity to teach combined  authenticated 
+encryption (AEAD) modes. The AEAD modes combine stream cipher modes with
+ MAC constructions that developers don’t have to think about. They’re a 
+little magical, in the same sense that ABS brakes were magical in the 
+1970s.</p>
+
+<p>While C.E. discusses some of the AEAD modes, the emphasis is on their
+ downsides. The authors would clearly rather have developers bolt on 
+HMAC-SHA2 manually, which is a shame; the track record on that 
+construction isn’t great.</p>
+
+<h3>Key Derivation</h3>
+
+<p>The sad fact is that developers think cryptographic keys are a kind 
+of password. Crypto code in the field is littered with hardcoded ASCII 
+strings used as keys. If you’re going to know just one thing about 
+cryptography, make it this: <strong>crypto keys are cryptographically random.</strong></p>
+
+<p>But users must be able to interact with cryptosystems. As a rule, 
+they can’t remember 128 bit random numbers. And so real cryptosystems 
+will occasionally need to accept passphrases.</p>
+
+<p>Meanwhile, the single most widespread application of cryptography in 
+modern software development is password storage. Virtually every online 
+application in the world deals with this problem, and most of them apply
+ crypto (badly).</p>
+
+<p>When C.E. was written <span class="sidenote">  In the past several 
+years, the literature on KDFs has taken on much greater importance as 
+GPU programming has begun demonstrating how bad weak KDFs are. The best 
+illustration of that are the GPU password crackers, which largely defeat
+ the “salted hash” constructions most applications use to protect 
+passwords. </span> , there were two mainstream key derivation functions 
+(KDFs) available for transmuting passphrases into crypto keys: bcrypt, 
+based on the authors’ own Blowfish algorithm, and PBKDF2, the hash-based
+ PKCS #5 v2.0 standard. Both constructions have the advantage of 
+incurring a very small time penalty from legitimate users while 
+extracting an enormous penalty from attackers. In the years since the 
+book was written, we’ve also learned about “memory-hard” KDFs, of which 
+scrypt is the seminal example, which are designed to be difficult to 
+scale attacks against even with custom silicon.</p>
+
+<p>Defense of user passwords is important enough to merit coverage in 
+the book. Every developer needs to know how. But the topic is even more 
+important in the more complicated cryptosystems C.E. contemplates. A 
+real-world cryptosystem can get every other detail right and still 
+manage to be merely as strong as a 1990s Unix password file if its keys 
+come from a poor KDF.</p>
+
+<h3>Side Channels</h3>
+
+<p>In computer security, a covert channel is a hidden signaling 
+mechanism. Attackers exploit covert channels to leak messages across 
+security boundaries <span class="sidenote">  (for instance in a pattern of specially-encoded DNS queries.) </span> . Side channels are the flip side of covert channels; they’re actual signaling performed unexpectedly.</p>
+
+<p>One of the first things every software developer learns how to do is 
+comparing strings. Developers don’t think before writing code to do 
+string compares; many of them have known how since they were 11 years 
+old. <strong>But the way you learned to compare strings when you were 11 doesn’t work with crypto secrets.</strong> Because the algorithm stops at the first mismatched character, it leaks timing information.</p>
+
+<p>Timing attacks <span class="sidenote">  Here’s the exploit: Build a 
+string you want to forge. Giving it an all-zeroes HMAC. Then send 
+thousands of variants of the string and HMAC with the first byte 
+randomized, and measuring each variant for the time it takes to get a 
+response. The variant that takes the longest on average is probably the 
+correct first byte. Lather, rinse, repeat. </span>  are pernicious, but they aren’t the most commonly exploited side channels. That honor belongs to protocol errors.</p>
+
+<p>The best example of a protocol error side channel is the padding 
+oracle. Ciphertexts are typically padded to block boundaries. Receivers 
+check the padding after decryption and strip it off. If the padding is 
+invalid, the system coughs up an error, and with it the ability to 
+decrypt messages without keys. The validity of the padding tips the 
+attacker off about the plaintext value of a selected byte.</p>
+
+<p>There are other error oracles besides the block padding oracle. 
+Several affect RSA. Variants of the attack affect some stream cipher 
+modes. An error oracle coupled with known plaintext broke SIM card 
+encryption. <strong>A book on safe crypto should give special coverage to error and exception handling.</strong></p>
+
+<p>The most counterintuitive example of a side channel attack I know of is Duong and Rizzo’s CRIME attack on TLS. Ask <em>Applied Cryptography</em> about compression and it’ll tell you:</p>
+
+<blockquote><p>Using a data compression algorithm together with an 
+encryption algorithm makes sense for two reasons:
+Cryptanalysis relies on exploiting redundancies in the plaintext; 
+compressing a file before encryption reduces these redundancies.
+Encryption is time-consuming; compressing a file before encryption 
+speeds up the entire process.</p></blockquote>
+
+<p><a href="http://security.stackexchange.com/questions/19911/crime-how-to-beat-the-beast-successor/19914#19914">It turns out, no</a>.
+ The length of the messages in a cryptosystem is also a potential side 
+channel. If attackers control plaintext, they can submit inputs that can
+ be correlated with message lengths to probe for the existence of string
+ prefixes; longer messages tell the attacker their guess was wrong, 
+while shorter messages indicate a redundancy that compression could 
+exploit, betraying the presence of the prefix. Attackers can decrypt 
+whole messages this way.</p>
+
+<p>Want more examples? Consider cloud hosting, probably the <em>de facto</em>
+ standard deployment environment for most new crypto. Cloud applications
+ share metal with strangers, and thus attackers, who will gladly spend 
+$40 to co-host themselves with a target.</p>
+
+<p>It turns out that the <em>microarchitecture</em> of a typical CPU 
+(that is, the design details of that CPU that aren’t immediately evident
+ in the instruction set) is riddled with side channels. An attacker on 
+the same machine as their victim can write a program that constantly 
+monitors the CPU caches, producing a trace that can be correlated with 
+crypto operations the attacker requests of that victim. It’s hard even 
+to know where all these caches are; for instance, modern CPU performance
+ relies on branch prediction, which uses its own obscure caches to hold 
+branch targets.</p>
+
+<p><em>Cryptography Engineering</em> provides some background 
+information on side channels, then throws up its hands and declares side
+ channels to be an “arms race” without providing in-depth coverage. <strong>This would be a nit if the specifics of side channels didn’t have so many specific and durable consequences:</strong></p>
+
+<ul>
+<li><p>Developers should choose mature crypto libraries that have been audited for side channel defects.</p></li>
+<li><p>Developers should be extraordinarily cautious both with error 
+messages and, more importantly, with handling exceptional cases in 
+message decryption.</p></li>
+<li><p>Developers shouldn’t compress plaintext before encrypting.</p></li>
+<li><p>Developers should be wary of hosting crypto code on shared 
+hardware, or of offering sensitive crypto tools on platforms which might
+ also host attacker code even at lower privilege levels.</p></li>
+</ul>
+
+
+<p>Simply put, side channels want their own chapter in C.E.</p>
+
+<h3>Browsers, TLS, and The Rest</h3>
+
+<p>Finally, some points that are less about criticizing C.E. and more about establishing how useful a new edition could be:</p>
+
+<ul>
+<li><p>HTTPS/TLS <span class="sidenote">  Frankly, Schneier doesn’t have
+ much of an excuse for not covering TLS; he’s the co-author, with Dave 
+Wagner, of one of the better-known security analyses of SSL 3.0 (the 
+basis for TLS). Word of advice: get Wagner to co-author the next 
+version! </span>  is the cryptosystem developers are most likely to come
+ into contact with. It’s not foolproof; you have to make choices to 
+deploy it. What ciphersuites should you use? What is perfect forward 
+secrecy and what’s the impact of using it? How does session resumption 
+work and what impact does it have on your systems security?</p></li>
+<li><p>I am beating my own dead hobbyhorse by saying this, but I also think a discussion of the perils of <a href="http://www.matasano.com/articles/javascript-cryptography/">browser Javascript cryptography</a> would be worthwhile. It’s a bad idea that is unlikely to get less popular on its own.</p></li>
+<li><p>Even if the authors are unwilling to delve into Javascript, the 
+interactions between HTTPS and the HTTP Same Origin Policy (the most 
+important security policy on the Internet) should be worth at least a 
+couple of paragraphs.</p></li>
+</ul>
+
+
+<br>
+
+
+<p>I obviously couldn’t have written a better book than <em>Cryptography Engineering</em>.
+ I doubt many other people could either. While we could use more books 
+about attacking crypto, we need one good one, kept up to date, on 
+building crypto. <em>Cryptography Engineering</em> should be that book.</p>
+
+<p>If this stuff is interesting to you,  here’s some additional reading:</p>
+
+<ul>
+<li><p>It should be unlawful to use RSA without reading <a href="http://crypto.stanford.edu/%7Edabo/papers/RSA-survey.pdf">20 Years Of Attacks On RSA</a>; Boneh’s paper won’t get you up to date, but it’ll give you a good idea what you’re up against.</p></li>
+<li><p>A good starting point on encrypt-then-MAC is <span class="sidenote">  Read everything else on Marlinspike’s and Langley’s blogs, too. </span>  (again) Moxie Marlinspike’s <a href="http://www.thoughtcrime.org/blog/the-cryptographic-doom-principle/">Cryptographic Doom Principle</a>. To see the interplay between cryptographic doom and side channels, read Adam Langley’s <a href="https://www.imperialviolet.org/2013/02/04/luckythirteen.html">Lucky 13 Attacks on TLS-CBC</a>;
+ pay attention towards the end at what a cast-iron bitch it is to try to
+ lock down badly-designed constructions against side channels.</p></li>
+<li><p>Watch <a href="http://rdist.root.org/2010/11/09/blackhat-2010-video-on-remote-timing-attacks/">Nate Lawson’s talk on exploiting timing attacks</a>.
+ Too many developers think of side channels as an abstract threat. And 
+too many of the ones that don’t see timing attacks everywhere, even 
+where they aren’t.</p></li>
+<li><p>Ross Anderson and Serge Vaudanay’s <a href="http://book.huihoo.com/pdf/security-engineering/Papers/psandqs.pdf">Minding Your P’s And Q’s</a> is the best introduction to parameter flaws in number-theoretic crypto like RSA and DSA.</p></li>
+<li><p>For a scary story to tell young developers before they go to sleep at night, read <a href="http://tau.ac.il/%7Etromer/papers/cache.pdf">Tromer and Osvik’s AES cache timing paper</a>, and then reconsider cloud crypto.</p></li>
+<li><p>Finally, if you’re interested in ECC crypto, the best place to start is <a href="http://nacl.cr.yp.to/">Bernstein, Lange, and Schwabe’s NaCl library</a>.
+ NaCl was carefully designed so that developers can pick it up and use 
+it today without creating low-level crypto vulnerabilities.</p></li>
+</ul>
+
+
+<p><em>Thanks to  Marsh Ray, Nate Lawson, Matthew Green, Sean Devlin, Tony Arcieri, and Hans Nielsen for reading drafts of this.</em></p>
+
+		</div>
+	<footer>
+		
+
+
+		
+
+
+
+
+	
+	
+	</footer>
+	
+</article>
+<!-- END OF _includes/article.html -->
+
+
+<!-- END OF _/layouts/post.html -->
+
+		
+			<footer>
+				Copyright © 2015
+
+	Thomas &amp; Erin Ptacek
+
+
+			</footer>
+			
+		</div> <!-- // .wrap -->
+	
+	<script>
+		$(document).ready(function() {
+			// Make images center
+			$('p:has(img)').css('text-align', 'center');
+			
+			// Add the image's title attribute as a caption
+			$('p:has(img)').append(function () {
+				return '<div class="caption">' + $('img', this).attr('title') + '</div>';
+			});
+			
+			// Prettify code
+			$('code').addClass('prettyprint');
+			$('pre code').addClass('linenums');
+			
+			// Copy to clipboard with button
+			$('pre:has(code)').prepend(function(){
+				return '<div class="clip-btn">copy to clipboard</div>';
+			});
+			$('.clip-btn').zclip({
+				path:'/js/ZeroClipboard.swf',
+				copy: $(this).next('code').text(),
+				afterCopy: function(){
+					$(this).replaceWith('<div class="clip-btn">copied!');
+					}
+			});
+		});
+	</script>
+
+
+</body></html>
+<!-- END OF _layouts/default.html -->

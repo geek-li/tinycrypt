@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>CubeHash - Wikipedia</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"CubeHash","wgTitle":"CubeHash","wgCurRevisionId":753292367,"wgRevisionId":753292367,"wgArticleId":20394410,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["NIST hash function competition"],"wgBreakFrames":false,"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgMonthNamesShort":["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"wgRelevantPageName":"CubeHash","wgRelevantArticleId":20394410,"wgRequestId":"WJjH7QpAMFkAAJ0hgMYAAAAW","wgIsProbablyEditable":true,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgFlaggedRevsParams":{"tags":{}},"wgStableRevisionId":null,"wgWikiEditorEnabledModules":{"toolbar":true,"dialogs":true,"preview":false,"publish":false},"wgBetaFeaturesFeatures":[],"wgMediaViewerOnClick":true,"wgMediaViewerEnabledByDefault":true,"wgVisualEditor":{"pageLanguageCode":"en","pageLanguageDir":"ltr","usePageImages":true,"usePageDescriptions":true},"wgPreferredVariant":"en","wgMFDisplayWikibaseDescriptions":{"search":true,"nearby":true,"watchlist":true,"tagline":true},"wgRelatedArticles":null,"wgRelatedArticlesUseCirrusSearch":true,"wgRelatedArticlesOnlyUseCirrusSearch":false,"wgULSCurrentAutonym":"English","wgNoticeProject":"wikipedia","wgCentralNoticeCookiesToDelete":[],"wgCentralNoticeCategoriesUsingLegacy":["Fundraising","fundraising"],"wgCategoryTreePageCategoryOptions":"{\"mode\":0,\"hideprefix\":20,\"showcount\":true,\"namespaces\":false}","wgWikibaseItemId":"Q4036754","wgCentralAuthMobileDomain":false,"wgVisualEditorToolbarScrollOffset":0,"wgEditSubmitButtonLabelPublish":false});mw.loader.state({"ext.globalCssJs.user.styles":"ready","ext.globalCssJs.site.styles":"ready","site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.cite.styles":"ready","wikibase.client.init":"ready","ext.visualEditor.desktopArticleTarget.noscript":"ready","ext.uls.interlanguage":"ready","ext.wikimediaBadges":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","mediawiki.skinning.interface":"ready","skins.vector.styles":"ready","ext.globalCssJs.user":"ready","ext.globalCssJs.site":"ready"});mw.loader.implement("user.options@0j3lz3q",function($,jQuery,require,module){mw.user.options.set({"variant":"en"});});mw.loader.implement("user.tokens@1dqfd7l",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["ext.cite.a11y","mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.page.startup","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.legacy.wikibits","mediawiki.searchSuggest","ext.gadget.teahouse","ext.gadget.ReferenceTooltips","ext.gadget.watchlist-notice","ext.gadget.DRN-wizard","ext.gadget.charinsert","ext.gadget.refToolbar","ext.gadget.extra-toolbar-buttons","ext.gadget.switcher","ext.gadget.featured-articles-links","ext.centralauth.centralautologin","mmv.head","mmv.bootstrap.autostart","ext.visualEditor.desktopArticleTarget.init","ext.visualEditor.targetLoader","ext.eventLogging.subscriber","ext.wikimediaEvents","ext.navigationTiming","ext.uls.eventlogger","ext.uls.init","ext.uls.interface","ext.quicksurveys.init","ext.centralNotice.geoIP","ext.centralNotice.startUp","skins.vector.js"]);});</script>
+<link rel="stylesheet" href="/w/load.php?debug=false&amp;lang=en&amp;modules=ext.cite.styles%7Cext.uls.interlanguage%7Cext.visualEditor.desktopArticleTarget.noscript%7Cext.wikimediaBadges%7Cmediawiki.legacy.commonPrint%2Cshared%7Cmediawiki.sectionAnchor%7Cmediawiki.skinning.interface%7Cskins.vector.styles%7Cwikibase.client.init&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/w/load.php?debug=false&amp;lang=en&amp;modules=startup&amp;only=scripts&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?debug=false&amp;lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.29.0-wmf.10"/>
+<meta name="referrer" content="origin-when-cross-origin"/>
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/CubeHash_Mixing_Function.svg/1920px-CubeHash_Mixing_Function.svg.png"/>
+<link rel="alternate" href="android-app://org.wikipedia/http/en.m.wikipedia.org/wiki/CubeHash"/>
+<link rel="alternate" type="application/x-wiki" title="Edit this page" href="/w/index.php?title=CubeHash&amp;action=edit"/>
+<link rel="edit" title="Edit this page" href="/w/index.php?title=CubeHash&amp;action=edit"/>
+<link rel="apple-touch-icon" href="/static/apple-touch/wikipedia.png"/>
+<link rel="shortcut icon" href="/static/favicon/wikipedia.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Wikipedia (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="//en.wikipedia.org/w/api.php?action=rsd"/>
+<link rel="copyright" href="//creativecommons.org/licenses/by-sa/3.0/"/>
+<link rel="canonical" href="https://en.wikipedia.org/wiki/CubeHash"/>
+<link rel="dns-prefetch" href="//login.wikimedia.org"/>
+<link rel="dns-prefetch" href="//meta.wikimedia.org" />
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-CubeHash rootpage-CubeHash skin-vector action-view">		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+							<div id="siteNotice"><!-- CentralNotice --></div>
+						<div class="mw-indicators">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="en">CubeHash</h1>
+									<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">From Wikipedia, the free encyclopedia</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Jump to:					<a href="#mw-head">navigation</a>, 					<a href="#p-search">search</a>
+				</div>
+				<div id="mw-content-text" lang="en" dir="ltr" class="mw-content-ltr"><p><b>CubeHash</b><sup id="cite_ref-bernstein_spec_1-0" class="reference"><a href="#cite_note-bernstein_spec-1">[1]</a></sup> is a <a href="/wiki/Cryptographic_hash_function" title="Cryptographic hash function">cryptographic hash function</a> submitted to the <a href="/wiki/NIST_hash_function_competition" title="NIST hash function competition">NIST hash function competition</a> by <a href="/wiki/Daniel_J._Bernstein" title="Daniel J. Bernstein">Daniel J. Bernstein</a>. CubeHash has a 128 byte state, uses <a href="/wiki/Wide_pipe_construction" class="mw-redirect" title="Wide pipe construction">wide pipe construction</a>, and is <a href="/wiki/Block_cipher#ARX_add-rotate-xor" title="Block cipher">ARX based</a>. Message blocks are <a href="/wiki/XOR" class="mw-redirect" title="XOR">XORed</a> into the initial bits of a 128-byte state, which then goes through an r-round <a href="/wiki/Bijection" title="Bijection">bijective</a> transformation between blocks. The initial NIST proposal ("Cubehash8/1") required about 200 <a href="/wiki/Cycles_per_byte" title="Cycles per byte">cycles per byte</a>.<sup id="cite_ref-bernstein_estimates_2-0" class="reference"><a href="#cite_note-bernstein_estimates-2">[2]</a></sup> After clarifications from NIST, the author changed the proposal to Cubehash16/32, which "is approximately 16 times faster than CubeHash8/1, easily catching up to both SHA-256 and SHA-512 on the reference platform" while still maintaining a "comfortable security margin".<sup id="cite_ref-bernstein_tweak_3-0" class="reference"><a href="#cite_note-bernstein_tweak-3">[3]</a></sup></p>
+<p>CubeHash advanced to the second round of the competition, but was not chosen as one of the 5 finalists. Bernstein has since tuned the parameters further.<sup id="cite_ref-cubedef_4-0" class="reference"><a href="#cite_note-cubedef-4">[4]</a></sup></p>
+<p></p>
+<div id="toc" class="toc">
+<div id="toctitle">
+<h2>Contents</h2>
+</div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#How_it_works"><span class="tocnumber">1</span> <span class="toctext">How it works</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Round_Function"><span class="tocnumber">1.1</span> <span class="toctext">Round Function</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-3"><a href="#Example_Hashes"><span class="tocnumber">2</span> <span class="toctext">Example Hashes</span></a>
+<ul>
+<li class="toclevel-2 tocsection-4"><a href="#Parameter_Changes"><span class="tocnumber">2.1</span> <span class="toctext">Parameter Changes</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Security"><span class="tocnumber">3</span> <span class="toctext">Security</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#References"><span class="tocnumber">4</span> <span class="toctext">References</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#External_links"><span class="tocnumber">5</span> <span class="toctext">External links</span></a></li>
+</ul>
+</div>
+<p></p>
+<h2><span class="mw-headline" id="How_it_works">How it works</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=CubeHash&amp;action=edit&amp;section=1" title="Edit section: How it works">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>This description refers to the latest specification, and not the NIST submission.<sup id="cite_ref-cubedef_4-1" class="reference"><a href="#cite_note-cubedef-4">[4]</a></sup></p>
+<p>CubeHash has 5 parameters, a certain instance is denoted by CubeHash<b>i</b>+<b>r</b>/<b>b</b>+<b>f</b>-<b>h</b>.</p>
+<ul>
+<li><b>i</b> is the number of initial rounds</li>
+<li><b>r</b> is the number of rounds per block</li>
+<li><b>b</b> is the block size in bytes, defined for {1, 2, 3, ... 128}</li>
+<li><b>f</b> is the number of final rounds</li>
+<li><b>h</b> is the size of the hash output in bits, defined for {8, 16, 24, 32, ... 512}</li>
+</ul>
+<p>In the original NIST submission, <b>i</b> and <b>f</b> was fixed to 10<b>r</b>. The obsolete notation CubeHash<b>r</b>/<b>b</b>-<b>h</b> indicates <b>i</b> and <b>f</b> being implicitly 10<b>r</b>.</p>
+<p>The internal state is defined as a five-dimensional array of words (four-byte integers), 0-1 in both dimensions. The words are referred to with their coordinates [00000] to [11111]. The words are treated as little-endian.</p>
+<p>The internal state is initialized by setting the first three words ([00000], [00001], [00010]) to <b>h</b>/8, <b>b</b>, and <b>r</b> respectively, all other words to zero. The state is then run through <b>i</b> rounds, and the initialization stage is complete. The state is now the Initialization Vector (IV). The IV can be saved and reused for a given combination of <b>h</b>, <b>b</b>, <b>r</b>.</p>
+<p>The message is padded and split to <b>b</b>-byte blocks. The padding appends a 1 bit, followed by as many 0 bits as necessary to make a complete block.</p>
+<p>Each block is inputed to by <a href="/wiki/Exclusive_or" title="Exclusive or">XORing</a> into the first <b>b</b> bytes of the state, and then performing <b>r</b> rounds of transformation.</p>
+<p>Finally, 1 is XORed to the state word [11111], and then <b>f</b> rounds of transformation are performed.</p>
+<p>The output hash is now contained in the first <b>h</b>/8 bytes of this final state.</p>
+<h3><span class="mw-headline" id="Round_Function">Round Function</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=CubeHash&amp;action=edit&amp;section=2" title="Edit section: Round Function">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<div class="thumb tright">
+<div class="thumbinner" style="width:222px;"><a href="/wiki/File:CubeHash_Mixing_Function.svg" class="image"><img alt="Illustration of mixing function" src="//upload.wikimedia.org/wikipedia/commons/thumb/0/02/CubeHash_Mixing_Function.svg/220px-CubeHash_Mixing_Function.svg.png" width="220" height="223" class="thumbimage" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/0/02/CubeHash_Mixing_Function.svg/330px-CubeHash_Mixing_Function.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/0/02/CubeHash_Mixing_Function.svg/440px-CubeHash_Mixing_Function.svg.png 2x" data-file-width="512" data-file-height="518" /></a>
+<div class="thumbcaption">
+<div class="magnify"><a href="/wiki/File:CubeHash_Mixing_Function.svg" class="internal" title="Enlarge"></a></div>
+The ten steps of the mixing function. Two of the five dimensions are unrolled.</div>
+</div>
+</div>
+<p>CubeHash round function consists of the following ten steps:</p>
+<ol>
+<li>Add x[<b>0</b>jklm] into x[<b>1</b>jklm] modulo 2<sup>32</sup>, for each (j,k,l,m).</li>
+<li>Rotate x[<b>0</b>jklm] upwards by 7 bits, for each (j,k,l,m).</li>
+<li>Swap x[<b>00</b>klm] with x[<b>01</b>klm], for each (k,l,m).</li>
+<li>Xor x[<b>1</b>jklm] into x[<b>0</b>jklm], for each (j,k,l,m).</li>
+<li>Swap x[<b>1</b>jk<b>0</b>m] with x[<b>1</b>jk<b>1</b>m], for each (j,k,m).</li>
+<li>Add x[<b>0</b>jklm] into x[<b>1</b>jklm] modulo 2<sup>32</sup>, for each (j,k,l,m).</li>
+<li>Rotate x[<b>0</b>jklm] upwards by 11 bits, for each (j,k,l,m).</li>
+<li>Swap x[<b>0</b>j<b>0</b>lm] with x[<b>0</b>j<b>1</b>lm], for each (j,l,m).</li>
+<li>Xor x[<b>1</b>jklm] into x[<b>0</b>jklm], for each (j,k,l,m).</li>
+<li>Swap x[<b>1</b>jkl<b>0</b>] with x[<b>1</b>jkl<b>1</b>], for each (j,k,l).</li>
+</ol>
+<h2><span class="mw-headline" id="Example_Hashes">Example Hashes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=CubeHash&amp;action=edit&amp;section=3" title="Edit section: Example Hashes">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>This example uses CubeHash80+8/1+80-512. The initialization vector is the same for all 80+8/1+<b>f</b>-512 hashes, and is as follows:</p>
+<pre>
+5df39869c73009fb108994600f1626e6f37c07360c0d8bb53d19cf57b8e74133\ 
+5b8034a3eff9892014c4ff315038ef2a391812fe52a440e9a293527d12ca4570\ 
+6e0958933470bf814aa4909adb3ec39384e9c314d0db874af21d45bcacb31252\ 
+1ce5ab6a3bf6f05de88abbdd0fcfd3fafb8225d546242eada52540095c3da221 
+</pre>
+<p>Hashing the <a href="/wiki/ASCII" title="ASCII">ASCII</a> message "Hello" (hex: 0x48, 0x65, 0x6c, 0x6c, 0x6f) uses 6 message blocks. There are 5 blocks from the message, and since this is a byte-aligned input, there is 1 block for padding. The 512 bit hash value is:</p>
+<pre>
+7ce309a25e2e1603ca0fc369267b4d43f0b1b744ac45d6213ca08e7567566444\
+8e2f62fdbf7bbd637ce40fc293286d75b9d09e8dda31bd029113e02ecccfd39b
+</pre>
+<p>A small change in the message, such as flipping a single bit, will wildly change the hash output, due to the <a href="/wiki/Avalanche_effect" title="Avalanche effect">avalanche effect</a>. Hashing the message "hello" (which only differs from "Hello" in 1 bit position) gives the following hash value:</p>
+<pre>
+01ee7f4eb0e0ebfdb8bf77460f64993faf13afce01b55b0d3d2a63690d25010f\
+7127109455a7c143ef12254183e762b15575e0fcc49c79a0471a970ba8a66638
+</pre>
+<h3><span class="mw-headline" id="Parameter_Changes">Parameter Changes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=CubeHash&amp;action=edit&amp;section=4" title="Edit section: Parameter Changes">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>CubeHash allows for many different parameters to be used to determine the hash output. It is up to the user to decide which parameters they wish to use. Here are several example hashes of different messages, using different parameters. The messages are all in ASCII.</p>
+<pre>
+message: ""  (the zero-length string)
+CubeHash160+16/32+160-512: 4a1d00bbcfcb5a9562fb981e7f7db3350fe2658639d948b9d57452c22328bb32\
+                           f468b072208450bad5ee178271408be0b16e5633ac8a1e3cf9864cfbfc8e043a
+
+CubeHash80+8/1+80-512: 90bc3f2948f7374065a811f1e47a208a53b1a2f3be1c0072759ed49c9c6c7f28\
+                       f26eb30d5b0658c563077d599da23f97df0c2c0ac6cce734ffe87b2e76ff7294
+
+CubeHash10+1/1+10-512: 3f917707df9acd9b94244681b3812880e267d204f1fdf795d398799b584fa8f1\
+                       f4a0b2dbd52fd1c4b6c5e020dc7a96192397dd1bce9b6d16484049f85bb71f2f
+
+CubeHash160+16/32+160-256: 44c6de3ac6c73c391bf0906cb7482600ec06b216c7c54a2a8688a6a42676577d
+
+CubeHash80+8/1+80-256: 38d1e8a22d7baac6fd5262d83de89cacf784a02caa866335299987722aeabc59
+
+CubeHash10+1/1+10-256: 80f72e07d04ddadb44a78823e0af2ea9f72ef3bf366fd773aa1fa33fc030e5cb
+</pre>
+<pre>
+message: "Hello"
+CubeHash160+16/32+160-512: dcc0503aae279a3c8c95fa1181d37c418783204e2e3048a081392fd61bace883\
+                           a1f7c4c96b16b4060c42104f1ce45a622f1a9abaeb994beb107fed53a78f588c
+
+CubeHash80+8/1+80-512: 7ce309a25e2e1603ca0fc369267b4d43f0b1b744ac45d6213ca08e7567566444\
+                       8e2f62fdbf7bbd637ce40fc293286d75b9d09e8dda31bd029113e02ecccfd39b
+
+CubeHash10+1/1+10-512: 13cf99c1a71e40b135f5535bee02e151eb4897e4de410b9cb6d7179c677074eb\
+                       6ef1ae9a9e685ef2d2807509541f484d39559525179d53838eda95eb3f6a401d
+
+CubeHash160+16/32+160-256: e712139e3b892f2f5fe52d0f30d78a0cb16b51b217da0e4acb103dd0856f2db0
+
+CubeHash80+8/1+80-256: 692638db57760867326f851bd2376533f37b640bd47a0ddc607a9456b692f70f
+
+CubeHash10+1/1+10-256: f63041a946aa98bd47f3175e6009dcb2ccf597b2718617ba46d56f27ffe35d49
+</pre>
+<pre>
+message: "The quick brown fox jumps over the lazy dog"
+CubeHash160+16/32+160-512: bdba44a28cd16b774bdf3c9511def1a2baf39d4ef98b92c27cf5e37beb8990b7\
+                           cdb6575dae1a548330780810618b8a5c351c1368904db7ebdf8857d596083a86
+
+CubeHash80+8/1+80-512: ca942b088ed9103726af1fa87b4deb59e50cf3b5c6dcfbcebf5bba22fb39a6be\
+                       9936c87bfdd7c52fc5e71700993958fa4e7b5e6e2a3672122475c40f9ec816ba
+
+CubeHash10+1/1+10-512: eb7f5f80706e8668c61186c3c710ce57f9094fbfa1dbdc7554842cdbb4d10ce4\
+                       2fce72736d10b152f6216f23fc648bce810a7af4d58e571ec1b852fa514a0a8e
+
+CubeHash160+16/32+160-256: 5151e251e348cbbfee46538651c06b138b10eeb71cf6ea6054d7ca5fec82eb79
+
+CubeHash80+8/1+80-256: 94e0c958d85cdfaf554919980f0f50b945b88ad08413e0762d6ff0219aff3e55
+
+CubeHash10+1/1+10-256: 217a4876f2b24cec489c9171f85d53395cc979156ea0254938c4c2c59dfdf8a4
+</pre>
+<p>The Initialization Vectors for the four variants shown are all different as well. For example, the Initialization Vector for CubeHash80+8/1+80-512 can be seen above, and the IV for CubeHash80+8/1+80-256 is:</p>
+<pre>
+830b2bd5273d616fd785876a4a500218a5388963eeb702fb47547842459f8d89\
+8727a1c8ba40bd48cef47fe82543c2735c033052ae9fcd632d4541bde6b6cb0d\
+cb8a9cdf579f5b67b2ae00968180af6e51ebdf0ca597cd2bf91f981f7ab29a62\
+01ad72d946e6c075c6d1337e0a293d6f90c438ac38be153f32aa288ffc5eca8a
+</pre>
+<h2><span class="mw-headline" id="Security">Security</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=CubeHash&amp;action=edit&amp;section=5" title="Edit section: Security">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>The strength of this function increases as <b>b</b> decreases towards 1, and as <b>r</b> increases. So CubeHash 8/1-512 is stronger (more secure) than CubeHash 1/1-512, and CubeHash 1/1-512 is stronger than CubeHash 1/2-512. The weakest possible version of this algorithm is CubeHash 1/128-<b>h</b>. However, there is a security versus time tradeoff. A more secure version will take longer to compute a hash value than a weakened version.</p>
+<h2><span class="mw-headline" id="References">References</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=CubeHash&amp;action=edit&amp;section=6" title="Edit section: References">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div class="reflist" style="list-style-type: decimal;">
+<ol class="references">
+<li id="cite_note-bernstein_spec-1"><span class="mw-cite-backlink"><b><a href="#cite_ref-bernstein_spec_1-0">^</a></b></span> <span class="reference-text"><cite class="citation journal">Daniel J. Bernstein (2009-09-14). <a rel="nofollow" class="external text" href="http://cubehash.cr.yp.to/submission2/spec.pdf">"CubeHash specification (2.B.1)"</a> <span style="font-size:85%;">(<a href="/wiki/Portable_Document_Format" title="Portable Document Format">PDF</a>)</span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ACubeHash&amp;rft.atitle=CubeHash+specification+%282.B.1%29&amp;rft.au=Daniel+J.+Bernstein&amp;rft.date=2009-09-14&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fcubehash.cr.yp.to%2Fsubmission2%2Fspec.pdf&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-bernstein_estimates-2"><span class="mw-cite-backlink"><b><a href="#cite_ref-bernstein_estimates_2-0">^</a></b></span> <span class="reference-text"><cite class="citation journal">Daniel J. Bernstein (2008-10-28). <a rel="nofollow" class="external text" href="http://cubehash.cr.yp.to/submission/estimates.pdf">"CubeHash efficiency estimates (2.B.2)"</a> <span style="font-size:85%;">(<a href="/wiki/Portable_Document_Format" title="Portable Document Format">PDF</a>)</span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ACubeHash&amp;rft.atitle=CubeHash+efficiency+estimates+%282.B.2%29&amp;rft.au=Daniel+J.+Bernstein&amp;rft.date=2008-10-28&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fcubehash.cr.yp.to%2Fsubmission%2Festimates.pdf&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-bernstein_tweak-3"><span class="mw-cite-backlink"><b><a href="#cite_ref-bernstein_tweak_3-0">^</a></b></span> <span class="reference-text"><cite class="citation journal">Daniel J. Bernstein (2009-07-15). <a rel="nofollow" class="external text" href="http://cubehash.cr.yp.to/submission/tweak.pdf">"CubeHash parameter tweak: 16 times faster"</a> <span style="font-size:85%;">(<a href="/wiki/Portable_Document_Format" title="Portable Document Format">PDF</a>)</span>.</cite><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ACubeHash&amp;rft.atitle=CubeHash+parameter+tweak%3A+16+times+faster&amp;rft.au=Daniel+J.+Bernstein&amp;rft.date=2009-07-15&amp;rft.genre=article&amp;rft_id=http%3A%2F%2Fcubehash.cr.yp.to%2Fsubmission%2Ftweak.pdf&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Ajournal" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+<li id="cite_note-cubedef-4"><span class="mw-cite-backlink">^ <a href="#cite_ref-cubedef_4-0"><sup><i><b>a</b></i></sup></a> <a href="#cite_ref-cubedef_4-1"><sup><i><b>b</b></i></sup></a></span> <span class="reference-text"><cite class="citation web">Daniel J. Bernstein. <a rel="nofollow" class="external text" href="http://cubehash.cr.yp.to/index.html">"Introduction to CubeHash"</a>.</cite><span title="ctx_ver=Z39.88-2004&amp;rfr_id=info%3Asid%2Fen.wikipedia.org%3ACubeHash&amp;rft.au=Daniel+J.+Bernstein&amp;rft.btitle=Introduction+to+CubeHash&amp;rft.genre=unknown&amp;rft_id=http%3A%2F%2Fcubehash.cr.yp.to%2Findex.html&amp;rft_val_fmt=info%3Aofi%2Ffmt%3Akev%3Amtx%3Abook" class="Z3988"><span style="display:none;">&#160;</span></span></span></li>
+</ol>
+</div>
+<h2><span class="mw-headline" id="External_links">External links</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=CubeHash&amp;action=edit&amp;section=7" title="Edit section: External links">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul>
+<li><a rel="nofollow" class="external text" href="http://cubehash.cr.yp.to/">The CubeHash web site</a></li>
+</ul>
+<div role="navigation" class="navbox" aria-label="Navbox" style="padding:3px">
+<table class="nowraplinks hlist navbox-inner" style="border-spacing:0;background:transparent;color:inherit">
+<tr>
+<td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px">
+<div style="padding:0em 0.25em"></div>
+<table class="nowraplinks navbox-subgroup" style="border-spacing:0">
+<tr>
+<td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px">
+<div style="padding:0em 0.25em"></div>
+<table class="nowraplinks hlist navbox-subgroup" style="border-spacing:0">
+<tr>
+<th scope="col" class="navbox-title" colspan="2">
+<div class="plainlinks hlist navbar mini">
+<ul>
+<li class="nv-view"><a href="/wiki/Template:Cryptography_hash" title="Template:Cryptography hash"><abbr title="View this template" style=";;background:none transparent;border:none;">v</abbr></a></li>
+<li class="nv-talk"><a href="/wiki/Template_talk:Cryptography_hash" title="Template talk:Cryptography hash"><abbr title="Discuss this template" style=";;background:none transparent;border:none;">t</abbr></a></li>
+<li class="nv-edit"><a class="external text" href="//en.wikipedia.org/w/index.php?title=Template:Cryptography_hash&amp;action=edit"><abbr title="Edit this template" style=";;background:none transparent;border:none;">e</abbr></a></li>
+</ul>
+</div>
+<span style="float:right;width:6em">&#160;</span>
+<div id="Cryptographic_hash_functions_.26_message_authentication_codes" style="font-size:114%"><a href="/wiki/Cryptographic_hash_function" title="Cryptographic hash function">Cryptographic hash functions</a> &amp; <a href="/wiki/Message_authentication_code" title="Message authentication code">message authentication codes</a></div>
+</th>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<td class="navbox-abovebelow" colspan="2">
+<div>
+<ul>
+<li><a href="/wiki/List_of_hash_functions" title="List of hash functions">List</a></li>
+<li><a href="/wiki/Comparison_of_cryptographic_hash_functions" title="Comparison of cryptographic hash functions">Comparison</a></li>
+<li><a href="/wiki/Hash_function_security_summary" title="Hash function security summary">Known attacks</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Common functions</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/MD5" title="MD5">MD5</a></li>
+<li><a href="/wiki/SHA-1" title="SHA-1">SHA-1</a></li>
+<li><a href="/wiki/SHA-2" title="SHA-2">SHA-2</a></li>
+<li><a href="/wiki/SHA-3" title="SHA-3">SHA-3</a></li>
+<li><a href="/wiki/BLAKE_(hash_function)#BLAKE2" title="BLAKE (hash function)">BLAKE2</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/NIST_hash_function_competition" title="NIST hash function competition">SHA-3 finalists</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/BLAKE_(hash_function)" title="BLAKE (hash function)">BLAKE</a></li>
+<li><a href="/wiki/Gr%C3%B8stl" title="Grøstl">Grøstl</a></li>
+<li><a href="/wiki/JH_(hash_function)" title="JH (hash function)">JH</a></li>
+<li><a href="/wiki/Skein_(hash_function)" title="Skein (hash function)">Skein</a></li>
+<li><a href="/wiki/SHA-3" title="SHA-3">Keccak (winner)</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Other functions</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Elliptic_curve_only_hash" title="Elliptic curve only hash">ECOH</a></li>
+<li><a href="/wiki/Fast_Syndrome_Based_Hash" class="mw-redirect" title="Fast Syndrome Based Hash">FSB</a></li>
+<li><a href="/wiki/GOST_(hash_function)" title="GOST (hash function)">GOST</a></li>
+<li><a href="/wiki/HAS-160" title="HAS-160">HAS-160</a></li>
+<li><a href="/wiki/HAVAL" title="HAVAL">HAVAL</a></li>
+<li><a href="/wiki/Kupyna" title="Kupyna">Kupyna</a></li>
+<li><a href="/wiki/LM_hash" title="LM hash">LM hash</a></li>
+<li><a href="/wiki/MD2_(cryptography)" title="MD2 (cryptography)">MD2</a></li>
+<li><a href="/wiki/MD4" title="MD4">MD4</a></li>
+<li><a href="/wiki/MD5" title="MD5">MD5</a></li>
+<li><a href="/wiki/MD6" title="MD6">MD6</a></li>
+<li><a href="/wiki/MDC-2" title="MDC-2">MDC-2</a></li>
+<li><a href="/wiki/N-Hash" title="N-Hash">N-Hash</a></li>
+<li><a href="/wiki/RIPEMD" title="RIPEMD">RIPEMD</a></li>
+<li><a href="/wiki/RadioGat%C3%BAn" title="RadioGatún">RadioGatún</a></li>
+<li><a href="/wiki/SWIFFT" title="SWIFFT">SWIFFT</a></li>
+<li><a href="/wiki/Snefru" title="Snefru">Snefru</a></li>
+<li><a href="/wiki/Streebog" title="Streebog">Streebog</a></li>
+<li><a href="/wiki/Tiger_(cryptography)" title="Tiger (cryptography)">Tiger</a></li>
+<li><a href="/wiki/Very_smooth_hash" title="Very smooth hash">VSH</a></li>
+<li><a href="/wiki/Whirlpool_(cryptography)" title="Whirlpool (cryptography)">WHIRLPOOL</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Key_derivation_function" title="Key derivation function">Key derivation functions</a></th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Bcrypt" title="Bcrypt">bcrypt</a></li>
+<li><a href="/wiki/Crypt_(C)" title="Crypt (C)">crypt</a></li>
+<li><a href="/wiki/PBKDF2" title="PBKDF2">PBKDF2</a></li>
+<li><a href="/wiki/Scrypt" title="Scrypt">scrypt</a></li>
+<li><a href="/wiki/Argon2" title="Argon2">Argon2</a></li>
+<li><a href="/wiki/Lyra2" title="Lyra2">Lyra2</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Message_authentication_code" title="Message authentication code">MAC functions</a></th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Data_Authentication_Algorithm" title="Data Authentication Algorithm">DAA</a></li>
+<li><a href="/wiki/CBC-MAC" title="CBC-MAC">CBC-MAC</a></li>
+<li><a href="/wiki/HMAC" class="mw-redirect" title="HMAC">HMAC</a></li>
+<li><a href="/wiki/One-key_MAC" title="One-key MAC">OMAC</a>/<a href="/wiki/CMAC" class="mw-redirect" title="CMAC">CMAC</a></li>
+<li><a href="/wiki/PMAC_(cryptography)" title="PMAC (cryptography)">PMAC</a></li>
+<li><a href="/wiki/VMAC" title="VMAC">VMAC</a></li>
+<li><a href="/wiki/UMAC" title="UMAC">UMAC</a></li>
+<li><a href="/wiki/Poly1305" title="Poly1305">Poly1305</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group"><a href="/wiki/Authenticated_encryption" title="Authenticated encryption">Authenticated<br />
+encryption</a> modes</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/CCM_mode" title="CCM mode">CCM</a></li>
+<li><a href="/wiki/CWC_mode" title="CWC mode">CWC</a></li>
+<li><a href="/wiki/EAX_mode" title="EAX mode">EAX</a></li>
+<li><a href="/wiki/Galois/Counter_Mode" title="Galois/Counter Mode">GCM</a></li>
+<li><a href="/wiki/IAPM_(mode)" title="IAPM (mode)">IAPM</a></li>
+<li><a href="/wiki/OCB_mode" title="OCB mode">OCB</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Attacks</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Collision_attack" title="Collision attack">Collision attack</a></li>
+<li><a href="/wiki/Preimage_attack" title="Preimage attack">Preimage attack</a></li>
+<li><a href="/wiki/Birthday_attack" title="Birthday attack">Birthday attack</a></li>
+<li><a href="/wiki/Brute_force_attack" class="mw-redirect" title="Brute force attack">Brute force attack</a></li>
+<li><a href="/wiki/Rainbow_table" title="Rainbow table">Rainbow table</a></li>
+<li><a href="/wiki/Side-channel_attack" title="Side-channel attack">Side-channel attack</a></li>
+<li><a href="/wiki/Length_extension_attack" title="Length extension attack">Length extension attack</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Design</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Avalanche_effect" title="Avalanche effect">Avalanche effect</a></li>
+<li><a href="/wiki/Collision_(computer_science)" title="Collision (computer science)">Hash collision</a></li>
+<li><a href="/wiki/Merkle%E2%80%93Damg%C3%A5rd_construction" title="Merkle–Damgård construction">Merkle–Damgård construction</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Standardization</th>
+<td class="navbox-list navbox-odd" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/CRYPTREC" title="CRYPTREC">CRYPTREC</a></li>
+<li><a href="/wiki/NESSIE" title="NESSIE">NESSIE</a></li>
+<li><a href="/wiki/NIST_hash_function_competition" title="NIST hash function competition">NIST hash function competition</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<th scope="row" class="navbox-group">Utilization</th>
+<td class="navbox-list navbox-even" style="text-align:left;border-left-width:2px;border-left-style:solid;width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Post-quantum_cryptography#Hash-based_cryptography" title="Post-quantum cryptography">Hash-based cryptography</a></li>
+<li><a href="/wiki/Key_stretching" title="Key stretching">Key stretching</a></li>
+<li><a href="/wiki/Merkle_tree" title="Merkle tree">Merkle tree</a></li>
+<li><a href="/wiki/Message_authentication" title="Message authentication">Message authentication</a></li>
+<li><a href="/wiki/Proof-of-work_system" title="Proof-of-work system">Proof of work</a></li>
+<li><a href="/wiki/Salt_(cryptography)" title="Salt (cryptography)">Salt</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<td colspan="2" class="navbox-list navbox-even" style="width:100%;padding:0px">
+<div style="padding:0em 0.25em"></div>
+<table class="nowraplinks collapsible collapsed navbox-subgroup" style="border-spacing:0">
+<tr>
+<th scope="col" class="navbox-title" colspan="2">
+<div class="plainlinks hlist navbar mini">
+<ul>
+<li class="nv-view"><a href="/wiki/Template:Cryptography_navbox" title="Template:Cryptography navbox"><abbr title="View this template" style=";;background:none transparent;border:none;">v</abbr></a></li>
+<li class="nv-talk"><a href="/wiki/Template_talk:Cryptography_navbox" title="Template talk:Cryptography navbox"><abbr title="Discuss this template" style=";;background:none transparent;border:none;">t</abbr></a></li>
+<li class="nv-edit"><a class="external text" href="//en.wikipedia.org/w/index.php?title=Template:Cryptography_navbox&amp;action=edit"><abbr title="Edit this template" style=";;background:none transparent;border:none;">e</abbr></a></li>
+</ul>
+</div>
+<div id="Cryptography" style="font-size:114%"><a href="/wiki/Cryptography" title="Cryptography">Cryptography</a></div>
+</th>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<td colspan="2" class="navbox-list navbox-odd" style="width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/History_of_cryptography" title="History of cryptography">History of cryptography</a></li>
+<li><a href="/wiki/Cryptanalysis" title="Cryptanalysis">Cryptanalysis</a></li>
+<li><a href="/wiki/Outline_of_cryptography" title="Outline of cryptography">Outline of cryptography</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<td colspan="2" class="navbox-list navbox-even" style="width:100%;padding:0px">
+<div style="padding:0em 0.25em">
+<ul>
+<li><a href="/wiki/Symmetric-key_algorithm" title="Symmetric-key algorithm">Symmetric-key algorithm</a></li>
+<li><a href="/wiki/Block_cipher" title="Block cipher">Block cipher</a></li>
+<li><a href="/wiki/Stream_cipher" title="Stream cipher">Stream cipher</a></li>
+<li><a href="/wiki/Public-key_cryptography" title="Public-key cryptography">Public-key cryptography</a></li>
+<li><a href="/wiki/Cryptographic_hash_function" title="Cryptographic hash function">Cryptographic hash function</a></li>
+<li><a href="/wiki/Message_authentication_code" title="Message authentication code">Message authentication code</a></li>
+<li><a href="/wiki/Cryptographically_secure_pseudorandom_number_generator" title="Cryptographically secure pseudorandom number generator">Random numbers</a></li>
+<li><a href="/wiki/Steganography" title="Steganography">Steganography</a></li>
+</ul>
+</div>
+</td>
+</tr>
+<tr style="height:2px">
+<td colspan="2"></td>
+</tr>
+<tr>
+<td class="navbox-abovebelow" colspan="2">
+<div>
+<ul>
+<li><img alt="Category" src="//upload.wikimedia.org/wikipedia/en/thumb/4/48/Folder_Hexagonal_Icon.svg/16px-Folder_Hexagonal_Icon.svg.png" title="Category" width="16" height="14" srcset="//upload.wikimedia.org/wikipedia/en/thumb/4/48/Folder_Hexagonal_Icon.svg/24px-Folder_Hexagonal_Icon.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/4/48/Folder_Hexagonal_Icon.svg/32px-Folder_Hexagonal_Icon.svg.png 2x" data-file-width="36" data-file-height="31" /> <a href="/wiki/Category:Cryptography" title="Category:Cryptography">Category</a></li>
+<li><img alt="Portal" src="//upload.wikimedia.org/wikipedia/en/thumb/f/fd/Portal-puzzle.svg/16px-Portal-puzzle.svg.png" title="Portal" width="16" height="14" srcset="//upload.wikimedia.org/wikipedia/en/thumb/f/fd/Portal-puzzle.svg/24px-Portal-puzzle.svg.png 1.5x, //upload.wikimedia.org/wikipedia/en/thumb/f/fd/Portal-puzzle.svg/32px-Portal-puzzle.svg.png 2x" data-file-width="32" data-file-height="28" /> <a href="/wiki/Portal:Cryptography" title="Portal:Cryptography">Portal</a></li>
+<li><img alt="WikiProject" src="//upload.wikimedia.org/wikipedia/commons/thumb/3/37/People_icon.svg/16px-People_icon.svg.png" title="WikiProject" width="16" height="16" srcset="//upload.wikimedia.org/wikipedia/commons/thumb/3/37/People_icon.svg/24px-People_icon.svg.png 1.5x, //upload.wikimedia.org/wikipedia/commons/thumb/3/37/People_icon.svg/32px-People_icon.svg.png 2x" data-file-width="100" data-file-height="100" /> <a href="/wiki/Wikipedia:WikiProject_Cryptography" title="Wikipedia:WikiProject Cryptography">WikiProject</a></li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+
+
+<!-- 
+NewPP limit report
+Parsed by mw1230
+Cached time: 20170206045305
+Cache expiry: 2592000
+Dynamic content: false
+CPU time usage: 0.112 seconds
+Real time usage: 0.141 seconds
+Preprocessor visited node count: 475/1000000
+Preprocessor generated node count: 0/1500000
+Post‐expand include size: 74968/2097152 bytes
+Template argument size: 29/2097152 bytes
+Highest expansion depth: 11/40
+Expensive parser function count: 0/500
+Lua time usage: 0.043/10.000 seconds
+Lua memory usage: 2.68 MB/50 MB
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%   95.638      1 -total
+ 64.45%   61.641      1 Template:Reflist
+ 55.64%   53.217      4 Template:Navbox
+ 50.28%   48.088      3 Template:Cite_paper
+ 33.62%   32.150      1 Template:Cryptography_navbox
+  7.13%    6.820      3 Template:Icon
+  6.82%    6.522      1 Template:Cryptography_hash
+  4.51%    4.315      1 Template:Cite_web
+  1.28%    1.228      2 Template:Sup
+-->
+
+<!-- Saved in parser cache with key enwiki:pcache:idhash:20394410-0!*!0!!en!4!* and timestamp 20170206045305 and revision id 753292367
+ -->
+<noscript><img src="//en.wikipedia.org/wiki/Special:CentralAutoLogin/start?type=1x1" alt="" title="" width="1" height="1" style="border: none; position: absolute;" /></noscript></div>					<div class="printfooter">
+						Retrieved from "<a dir="ltr" href="https://en.wikipedia.org/w/index.php?title=CubeHash&amp;oldid=753292367">https://en.wikipedia.org/w/index.php?title=CubeHash&amp;oldid=753292367</a>"					</div>
+				<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Help:Category" title="Help:Category">Categories</a>: <ul><li><a href="/wiki/Category:NIST_hash_function_competition" title="Category:NIST hash function competition">NIST hash function competition</a></li></ul></div></div>				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Navigation menu</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Personal tools</h3>
+						<ul>
+							<li id="pt-anonuserpage">Not logged in</li><li id="pt-anontalk"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n">Talk</a></li><li id="pt-anoncontribs"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y">Contributions</a></li><li id="pt-createaccount"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=CubeHash" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=CubeHash" title="You're encouraged to log in; however, it's not mandatory. [o]" accesskey="o">Log in</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Namespaces</h3>
+						<ul>
+															<li  id="ca-nstab-main" class="selected"><span><a href="/wiki/CubeHash"  title="View the content page [c]" accesskey="c">Article</a></span></li>
+															<li  id="ca-talk"><span><a href="/wiki/Talk:CubeHash"  title="Discussion about the content page [t]" accesskey="t" rel="discussion">Talk</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 id="p-variants-label">
+							<span>Variants</span><a href="#"></a>
+						</h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Views</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="/wiki/CubeHash" >Read</a></span></li>
+															<li id="ca-edit"><span><a href="/w/index.php?title=CubeHash&amp;action=edit"  title="Edit this page [e]" accesskey="e">Edit</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="/w/index.php?title=CubeHash&amp;action=history"  title="Past revisions of this page [h]" accesskey="h">View history</a></span></li>
+													</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<h3 id="p-cactions-label"><span>More</span><a href="#"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Search</label>
+						</h3>
+
+						<form action="/w/index.php" id="searchform">
+							<div id="simpleSearch">
+							<input type="search" name="search" placeholder="Search Wikipedia" title="Search Wikipedia [f]" accesskey="f" id="searchInput"/><input type="hidden" value="Special:Search" name="title"/><input type="submit" name="fulltext" value="Search" title="Search Wikipedia for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/><input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton"/>							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="/wiki/Main_Page"  title="Visit the main page"></a></div>
+						<div class="portal" role="navigation" id='p-navigation' aria-labelledby='p-navigation-label'>
+			<h3 id='p-navigation-label'>Navigation</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-mainpage-description"><a href="/wiki/Main_Page" title="Visit the main page [z]" accesskey="z">Main page</a></li><li id="n-contents"><a href="/wiki/Portal:Contents" title="Guides to browsing Wikipedia">Contents</a></li><li id="n-featuredcontent"><a href="/wiki/Portal:Featured_content" title="Featured content – the best of Wikipedia">Featured content</a></li><li id="n-currentevents"><a href="/wiki/Portal:Current_events" title="Find background information on current events">Current events</a></li><li id="n-randompage"><a href="/wiki/Special:Random" title="Load a random article [x]" accesskey="x">Random article</a></li><li id="n-sitesupport"><a href="https://donate.wikimedia.org/wiki/Special:FundraiserRedirector?utm_source=donate&amp;utm_medium=sidebar&amp;utm_campaign=C13_en.wikipedia.org&amp;uselang=en" title="Support us">Donate to Wikipedia</a></li><li id="n-shoplink"><a href="//shop.wikimedia.org" title="Visit the Wikipedia store">Wikipedia store</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-interaction' aria-labelledby='p-interaction-label'>
+			<h3 id='p-interaction-label'>Interaction</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-help"><a href="/wiki/Help:Contents" title="Guidance on how to use and edit Wikipedia">Help</a></li><li id="n-aboutsite"><a href="/wiki/Wikipedia:About" title="Find out about Wikipedia">About Wikipedia</a></li><li id="n-portal"><a href="/wiki/Wikipedia:Community_portal" title="About the project, what you can do, where to find things">Community portal</a></li><li id="n-recentchanges"><a href="/wiki/Special:RecentChanges" title="A list of recent changes in the wiki [r]" accesskey="r">Recent changes</a></li><li id="n-contactpage"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us" title="How to contact Wikipedia">Contact page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-tb' aria-labelledby='p-tb-label'>
+			<h3 id='p-tb-label'>Tools</h3>
+
+			<div class="body">
+									<ul>
+						<li id="t-whatlinkshere"><a href="/wiki/Special:WhatLinksHere/CubeHash" title="List of all English Wikipedia pages containing links to this page [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked"><a href="/wiki/Special:RecentChangesLinked/CubeHash" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-upload"><a href="/wiki/Wikipedia:File_Upload_Wizard" title="Upload files [u]" accesskey="u">Upload file</a></li><li id="t-specialpages"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-permalink"><a href="/w/index.php?title=CubeHash&amp;oldid=753292367" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info"><a href="/w/index.php?title=CubeHash&amp;action=info" title="More information about this page">Page information</a></li><li id="t-wikibase"><a href="https://www.wikidata.org/wiki/Q4036754" title="Link to connected data repository item [g]" accesskey="g">Wikidata item</a></li><li id="t-cite"><a href="/w/index.php?title=Special:CiteThisPage&amp;page=CubeHash&amp;id=753292367" title="Information on how to cite this page">Cite this page</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-coll-print_export' aria-labelledby='p-coll-print_export-label'>
+			<h3 id='p-coll-print_export-label'>Print/export</h3>
+
+			<div class="body">
+									<ul>
+						<li id="coll-create_a_book"><a href="/w/index.php?title=Special:Book&amp;bookcmd=book_creator&amp;referer=CubeHash">Create a book</a></li><li id="coll-download-as-rdf2latex"><a href="/w/index.php?title=Special:Book&amp;bookcmd=render_article&amp;arttitle=CubeHash&amp;returnto=CubeHash&amp;oldid=753292367&amp;writer=rdf2latex">Download as PDF</a></li><li id="t-print"><a href="/w/index.php?title=CubeHash&amp;printable=yes" title="Printable version of this page [p]" accesskey="p">Printable version</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id='p-lang' aria-labelledby='p-lang-label'>
+			<h3 id='p-lang-label'>Languages</h3>
+
+			<div class="body">
+									<ul>
+						<li class="interlanguage-link interwiki-ru"><a href="https://ru.wikipedia.org/wiki/CubeHash" title="CubeHash – Russian" lang="ru" hreflang="ru" class="interlanguage-link-target">Русский</a></li>					</ul>
+				<div class='after-portlet after-portlet-lang'><span class="wb-langlinks-edit wb-langlinks-link"><a href="https://www.wikidata.org/wiki/Q4036754#sitelinks-wikipedia" title="Edit interlanguage links" class="wbc-editpage">Edit links</a></span></div>			</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> This page was last modified on 6 December 2016, at 08:40.</li>
+											<li id="footer-info-copyright">Text is available under the <a rel="license" href="//en.wikipedia.org/wiki/Wikipedia:Text_of_Creative_Commons_Attribution-ShareAlike_3.0_Unported_License">Creative Commons Attribution-ShareAlike License</a><a rel="license" href="//creativecommons.org/licenses/by-sa/3.0/" style="display:none;"></a>;
+additional terms may apply.  By using this site, you agree to the <a href="//wikimediafoundation.org/wiki/Terms_of_Use">Terms of Use</a> and <a href="//wikimediafoundation.org/wiki/Privacy_policy">Privacy Policy</a>. Wikipedia® is a registered trademark of the <a href="//www.wikimediafoundation.org/">Wikimedia Foundation, Inc.</a>, a non-profit organization.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="https://wikimediafoundation.org/wiki/Privacy_policy" class="extiw" title="wmf:Privacy policy">Privacy policy</a></li>
+											<li id="footer-places-about"><a href="/wiki/Wikipedia:About" title="Wikipedia:About">About Wikipedia</a></li>
+											<li id="footer-places-disclaimer"><a href="/wiki/Wikipedia:General_disclaimer" title="Wikipedia:General disclaimer">Disclaimers</a></li>
+											<li id="footer-places-contact"><a href="//en.wikipedia.org/wiki/Wikipedia:Contact_us">Contact Wikipedia</a></li>
+											<li id="footer-places-developers"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/How_to_contribute">Developers</a></li>
+											<li id="footer-places-cookiestatement"><a href="https://wikimediafoundation.org/wiki/Cookie_statement">Cookie statement</a></li>
+											<li id="footer-places-mobileview"><a href="//en.m.wikipedia.org/w/index.php?title=CubeHash&amp;mobileaction=toggle_view_mobile" class="noprint stopMobileRedirectToggle">Mobile view</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-copyrightico">
+							<a href="https://wikimediafoundation.org/"><img src="/static/images/wikimedia-button.png" srcset="/static/images/wikimedia-button-1.5x.png 1.5x, /static/images/wikimedia-button-2x.png 2x" width="88" height="31" alt="Wikimedia Foundation"/></a>						</li>
+											<li id="footer-poweredbyico">
+							<a href="//www.mediawiki.org/"><img src="/static/images/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="/static/images/poweredby_mediawiki_132x47.png 1.5x, /static/images/poweredby_mediawiki_176x62.png 2x" width="88" height="31"/></a>						</li>
+									</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.112","walltime":"0.141","ppvisitednodes":{"value":475,"limit":1000000},"ppgeneratednodes":{"value":0,"limit":1500000},"postexpandincludesize":{"value":74968,"limit":2097152},"templateargumentsize":{"value":29,"limit":2097152},"expansiondepth":{"value":11,"limit":40},"expensivefunctioncount":{"value":0,"limit":500},"entityaccesscount":{"value":0,"limit":400},"timingprofile":["100.00%   95.638      1 -total"," 64.45%   61.641      1 Template:Reflist"," 55.64%   53.217      4 Template:Navbox"," 50.28%   48.088      3 Template:Cite_paper"," 33.62%   32.150      1 Template:Cryptography_navbox","  7.13%    6.820      3 Template:Icon","  6.82%    6.522      1 Template:Cryptography_hash","  4.51%    4.315      1 Template:Cite_web","  1.28%    1.228      2 Template:Sup"]},"scribunto":{"limitreport-timeusage":{"value":"0.043","limit":"10.000"},"limitreport-memusage":{"value":2811628,"limit":52428800}},"cachereport":{"origin":"mw1230","timestamp":"20170206045305","ttl":2592000,"transientcontent":false}}});});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":63,"wgHostname":"mw1254"});});</script>
+	</body>
+</html>
