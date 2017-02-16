@@ -67,7 +67,8 @@ static const uint8_t S[256] = {
 //
 // T is a substitution that generates 32 bits from 32 bits T : Z32
 // This substitution is a reversible process. 
-// It consists of a non-linear substitution.  
+// It consists of linear and non-linear substitution operations.  
+
 uint32_t T(uint32_t x, int t)
 {
     int   i;
@@ -75,16 +76,18 @@ uint32_t T(uint32_t x, int t)
     
     u.w = x;
     
+    // apply non-linear substitution
     for (i=0; i<4; i++) {
       u.b[i] = S[u.b[i]];
     }
+    // apply linear substitution
     if (t==0)
     {
-      // TK macro
+      // for key setup
       return u.w ^ ROTL32(u.w, 13) ^ 
                    ROTL32(u.w, 23);
     } else {
-      // T macro
+      // for encryption
       return u.w ^ ROTL32(u.w,  2) ^ 
                    ROTL32(u.w, 10) ^ 
                    ROTL32(u.w, 18) ^ 
@@ -96,7 +99,9 @@ uint32_t T(uint32_t x, int t)
 //
 // This algorithm uses a nonlinear substitution structure, 
 // encrypting 32 bits at a time. This is called a one-round exchange.
-uint32_t F(uint32_t x0, uint32_t x1, uint32_t x2, uint32_t x3, uint32_t rk)
+
+uint32_t F(uint32_t x0, uint32_t x1, 
+    uint32_t x2, uint32_t x3, uint32_t rk)
 {
     return x0 ^ T(x1 ^ x2 ^ x3 ^ rk, 1);
 }
@@ -104,6 +109,7 @@ uint32_t F(uint32_t x0, uint32_t x1, uint32_t x2, uint32_t x3, uint32_t rk)
 // The constant parameter CK
 //
 // generate CK constant for index i
+
 uint32_t CK(int i)
 {
     int      j;
@@ -116,23 +122,27 @@ uint32_t CK(int i)
     return ck;
 }
   
-void sm4_setkey(sm4_ctx *c, const void *key, int enc)
-{
+void sm4_setkey(sm4_ctx *c, const void *key, int enc) {
     uint32_t *rk=c->rk;
     uint32_t *k=(uint32_t*)key;
     uint32_t t; 
     int      i;
     
-    uint32_t k0 = SWAP32(k[0]) ^ 0xa3b1bac6;
-    uint32_t k1 = SWAP32(k[1]) ^ 0x56aa3350;
-    uint32_t k2 = SWAP32(k[2]) ^ 0x677d9197;
-    uint32_t k3 = SWAP32(k[3]) ^ 0xb27022dc;
+    // load the key
+    for (i=0; i<4; i++) {
+      k[i] = SWAP32(((uint32_t*)key)[i]);
+    }
+    // xor FK values
+    k[0] ^= 0xa3b1bac6; k[1] ^= 0x56aa3350;
+    k[2] ^= 0x677d9197; k[3] ^= 0xb27022dc;
 
-    rk[0] = k0 ^ T(k1    ^ k2    ^ k3    ^ 0x00070e15, 0);
-    rk[1] = k1 ^ T(k2    ^ k3    ^ rk[0] ^ 0x1c232a31, 0);
-    rk[2] = k2 ^ T(k3    ^ rk[0] ^ rk[1] ^ 0x383f464d, 0);
-    rk[3] = k3 ^ T(rk[0] ^ rk[1] ^ rk[2] ^ 0x545b6269, 0);
+    // setup 4 sub keys
+    rk[0] = k[0] ^ T(k[1]  ^ k[2]  ^  k[3] ^ 0x00070e15, 0);
+    rk[1] = k[1] ^ T(k[2]  ^ k[3]  ^ rk[0] ^ 0x1c232a31, 0);
+    rk[2] = k[2] ^ T(k[3]  ^ rk[0] ^ rk[1] ^ 0x383f464d, 0);
+    rk[3] = k[3] ^ T(rk[0] ^ rk[1] ^ rk[2] ^ 0x545b6269, 0);
     
+    // generate remaining 28
     for (i=4; i<32; i++) 
     {
       rk[i] = rk[i-4] ^ 
@@ -141,7 +151,7 @@ void sm4_setkey(sm4_ctx *c, const void *key, int enc)
               rk[i-1] ^ 
               CK(i), 0);
     }
-    
+    // reverse the order of keys if decrypting
     if (enc == SM4_DECRYPT) {
       for (i = 0; i < 16; i++) {
         XCHG(rk[i], rk[31 - i]);

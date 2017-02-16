@@ -87,12 +87,12 @@ typedef union {
 
 // 128-bit type
 typedef union {
-      uint8_t  b[16];
-      uint32_t w[4];
+    uint8_t  b[16];
+    uint32_t w[4];
 } w128_t;
    
 typedef struct sm4_ctx_t {
-  uint32_t rk[SM4_ROUNDS];
+    uint32_t rk[SM4_ROUNDS];
 } sm4_ctx;
 
 #ifdef __cplusplus
